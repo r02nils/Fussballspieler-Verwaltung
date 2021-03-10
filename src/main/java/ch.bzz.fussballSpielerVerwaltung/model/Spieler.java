@@ -70,4 +70,8 @@ public class Spieler {
     public void setImagePath(String imagePath) {
         imagePath = imagePath;
     }
+
+    public String toString(){
+        return name;
+    }
 }

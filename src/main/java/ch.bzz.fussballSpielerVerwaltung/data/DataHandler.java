@@ -6,50 +6,41 @@ import ch.bzz.fussballSpielerVerwaltung.model.Position;
 import ch.bzz.fussballSpielerVerwaltung.model.Spieler;
 import ch.bzz.fussballSpielerVerwaltung.model.Team;
 import ch.bzz.fussballSpielerVerwaltung.service.Config;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import sun.java2d.pipe.SpanClipRenderer;
+import com.google.gson.*;
 
-import java.awt.print.Book;
-import java.io.*;
-import java.nio.charset.StandardCharsets;
+
+import java.io.*;;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
- * data handler for reading and writing the csv files
+ * data handler for reading and writing json files
  * <p>
- * M133: Bookshelf
+ * M133: Fussballspieler-Verwaltung
  *
- * @author Marcel Suter
+ * @author Nils Rothenbühler
  */
 
 public class DataHandler {
     private static final DataHandler instance = new DataHandler();
-    private static Map<String, Spieler> spielerMap;
-    private static Map<String, Team> teamMap;
-    private static Map<String, Liga> ligaMap;
-    private static Map<String, Position> posMap;
-    private static Map<String, Nation> natMap;
+    private static Vector<Spieler> spielerVector;
+    private static Vector<Team> teamMap;
+    private static Vector<Liga> ligaMap;
+    private static Vector<Position> posMap;
+    private static Vector<Nation> natMap;
 
     /**
      * default constructor: defeat instantiation
      */
     private DataHandler() {
-        spielerMap = new HashMap<>();
-        teamMap = new HashMap<>();
-        ligaMap = new HashMap<>();
-        posMap = new HashMap<>();
-        natMap = new HashMap<>();
+        spielerVector = new Vector<>();
+        teamMap = new Vector<>();
+        ligaMap = new Vector<>();
+        posMap = new Vector<>();
+        natMap = new Vector<>();
 
-        Nation nat1 = new Nation("Spain", "372178.png");
-        Liga liga1 = new Liga("LaLiga", "1324.png");
-        Team team1 = new Team("Real Madrid", "234.png", liga1);
-        Position pos1 = new Position("LF");
-        Spieler spieler1 = new Spieler("Marco Asensio", team1, nat1, pos1, "1.png");
-        spielerMap.put("Spieler1", spieler1);
-        //readJSON();
+        spielerVector = readJSON();
     }
 
     /**
@@ -57,10 +48,39 @@ public class DataHandler {
      * @param spielerID  the identifier
      * @return book-object
      */
-    public static Spieler readSpieler(int spielerID) {
+    public static Spieler readSpielerByID(int spielerID) {
         Spieler spieler = new Spieler();
-        if (getSpielerMap().containsKey(spielerID)) {
-            spieler = getSpielerMap().get(spielerID);
+        for (int i = 0; i < spielerVector.size(); i++) {
+            if(spielerVector.get(i).getSpielerID() == spielerID){
+                spieler = spielerVector.get(i);
+                break;
+            }
+        }
+        return spieler;
+    }
+
+    public static Vector<Spieler> readSpielerByName(String name){
+        readJSON();
+        Vector<Spieler> spieler = new Vector<>();
+        name = name.toLowerCase();
+        for (int i = 0; i < spielerVector.size(); i++) {
+            String spielerName = spielerVector.get(i).getName().toLowerCase();
+            if(spielerName.contains(name)){
+                spieler.add(spielerVector.get(i));
+            }
+        }
+        return spieler;
+    }
+
+    public static Vector<Spieler> readSpielerByTeamName(String team){
+        readJSON();
+        Vector<Spieler> spieler = new Vector<>();
+        team = team.toLowerCase();
+        for (int i = 0; i < spielerVector.size(); i++) {
+            String spielerName = spielerVector.get(i).getTeam().getTeam().toLowerCase();
+            if(spielerName.contains(team)){
+                spieler.add(spielerVector.get(i));
+            }
         }
         return spieler;
     }
@@ -70,65 +90,73 @@ public class DataHandler {
      * @param spieler the book to be saved
      */
     public static void saveSpieler(Spieler spieler) {
-        getSpielerMap().put(String.valueOf(spieler.getSpielerID()), spieler);
+        getSpielerVector().add(spieler.getSpielerID(), spieler);
         writeJSON();
     }
 
     /**
-     * gets the bookMap
+     * gets the spielervector
      * @return the bookMap
      */
-    public static Map<String, Spieler> getSpielerMap() {
-        return spielerMap;
+    public static Vector<Spieler> getSpielerVector() {
+        return spielerVector;
     }
-
-    /**
-     * gets the publisherMap
-     * @return the publisherMap
-     */
 
     /**
      * reads the books and publishers
      */
-    private static void readJSON() {
-        try {
-            byte[] jsonData = Files.readAllBytes(Paths.get(Config.getProperty("spielerJSON")));
-            ObjectMapper objectMapper = new ObjectMapper();
-            Spieler[] spieler = objectMapper.readValue(jsonData, Spieler[].class);
-            /*for (Spieler spieler1 : spieler) {
-                String publisherUUID = spieler1.getPublisher().getPublisherUUID();
-                Publisher publisher;
-                if (getPublisherMap().containsKey(publisherUUID)) {
-                    publisher = getPublisherMap().get(publisherUUID);
-                } else {
-                    publisher = book.getPublisher();
-                    getPublisherMap().put(publisherUUID, publisher);
-                }
-                book.setPublisher(publisher);
-                getBookMap().put(book.getBookUUID(), book);
+    private static Vector<Spieler> readJSON(){
+        Vector<Spieler> s = new Vector<>();
+        Spieler spieler= new Spieler();
+        Gson gson = new Gson();
+        try{
+            BufferedReader reader = Files.newBufferedReader(Paths.get(Config.getProperty("spielerJSON")));
+            String line = reader.readLine();
 
-            }*/
-        } catch (IOException e) {
-            e.printStackTrace();
+            String[] splits =  line.replace("[","").replace("]","")
+                    .replace("},{", "}},{{").split("\\},\\{");
+            ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(splits));
+            for (int i = 0; i < arrayList.size(); i++) {
+                spieler =
+                        gson.fromJson(arrayList.get(i),
+                                Spieler.class);
+
+                s.add(spieler);
+                System.out.println(spieler);
+            }
         }
+        catch (Exception e){
+
+        }
+         return s;
     }
 
     /**
-     * write the books and publishers
+     * write spieler
      *
      */
-    private static void writeJSON() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        Writer writer;
-        FileOutputStream fileOutputStream = null;
+    private static void writeJSON(){
+        try{
+            spielerVector = readJSON();
+            Gson gson = new Gson();
+            Writer writer = new FileWriter(Config.getProperty("spielerJSON"));
 
-        String bookPath = Config.getProperty("spielerJSON");
-        try {
-            fileOutputStream = new FileOutputStream(bookPath);
-            writer = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
-            objectMapper.writeValue(writer, getSpielerMap().values());
-        } catch (IOException ex) {
-            ex.printStackTrace();
+            Nation n = new Nation("Spanien", "1.png");
+            Liga l = new Liga("LaLiga", "1.png");
+            Team t = new Team("Real Madrid", "1.png", l);
+            Position p = new Position("LF");
+            Spieler s = new Spieler("Marco Asensio", t,n,p,"1.png");
+
+            spielerVector.add(s);
+
+            gson.toJson(spielerVector, writer);
+            writer.close();
         }
+        catch (Exception e){
+
+        }
+    }
+    public static void main(String[] args){
+        writeJSON();
     }
 }
