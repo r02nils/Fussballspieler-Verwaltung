@@ -1,5 +1,13 @@
 package ch.bzz.fussballSpielerVerwaltung.model;
 
+/**
+ * Klasse: Team
+ * M133: Fussballspieler-Verwaltung
+ *
+ * @author Nils Rothenbühler
+ * @version 1.0
+ * @date 13.03.2021
+ */
 public class Team {
 
     private int teamID;
@@ -7,42 +15,42 @@ public class Team {
     private String imagePath;
     private Liga liga;
 
-    public Team(String team, String imagePath, Liga liga){
+    /**
+     * Team constructor
+     * @param teamID
+     * @param team
+     * @param imagePath
+     * @param liga
+     */
+    public Team(int teamID, String team, String imagePath, Liga liga){
+        this.teamID = teamID;
         this.team = team;
         this.imagePath = imagePath;
         this.liga = liga;
-        teamID++;
     }
 
+    /**
+     * get ID
+     * @return teamID
+     */
     public int getTeamID() {
         return teamID;
     }
 
-    public void setTeamID(int teamID) {
-        this.teamID = teamID;
-    }
-
+    /**
+     * get Team
+     * @return team
+     */
     public String getTeam() {
         return team;
     }
 
-    public void setTeam(String team) {
-        this.team = team;
-    }
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
+    /**
+     * get Liga
+     * @return liga
+     */
     public Liga getLiga() {
         return liga;
     }
 
-    public void setLiga(Liga liga) {
-        this.liga = liga;
-    }
 }

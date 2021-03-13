@@ -1,6 +1,14 @@
 package ch.bzz.fussballSpielerVerwaltung.model;
 
-public class Spieler {
+/**
+ * Klasse: Spieler
+ * M133: Fussballspieler-Verwaltung
+ *
+ * @author Nils Rothenbühler
+ * @version 1.0
+ * @date 13.03.2021
+ */
+public class Spieler implements Comparable<Spieler>{
 
     private int spielerID;
     private String name;
@@ -9,69 +17,88 @@ public class Spieler {
     private Nation nat;
     private String imagePath;
 
-    public Spieler(String name, Team team, Nation nat, Position pos, String imagePath){
+
+    /**
+     * Spieler constructor
+     * @param spielerID
+     * @param name
+     * @param team
+     * @param nat
+     * @param pos
+     * @param imagePath
+     */
+    public Spieler(int spielerID, String name, Team team, Nation nat, Position pos, String imagePath){
+        this.spielerID = spielerID;
         this.name = name;
         this.team = team;
         this.nat = nat;
         this.pos = pos;
         this.nat = nat;
         this.imagePath = imagePath;
-        spielerID++;
     }
 
+    /**
+     * Spieler constructor (default)
+     */
     public Spieler(){
 
     }
 
+    /**
+     * get SpielerID
+     * @return spielerID
+     */
     public int getSpielerID() {
         return spielerID;
     }
 
-    public void setSpielerID(int spielerID) {
-        spielerID = spielerID;
-    }
-
+    /**
+     * get Name
+     * @return name
+     */
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    /**
+     * get Team
+     * @return team
+     */
     public Team getTeam() {
         return team;
     }
 
-    public void setTeam(Team team) {
-        this.team = team;
-    }
-
+    /**
+     * get Position
+     * @return pos
+     */
     public Position getPos() {
         return pos;
     }
 
-    public void setPos(Position pos) {
-        this.pos = pos;
-    }
-
+    /**
+     * get Nation
+     * @return nat
+     */
     public Nation getNat() {
         return nat;
     }
 
-    public void setNat(Nation nat) {
-        this.nat = nat;
-    }
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        imagePath = imagePath;
-    }
-
+    /**
+     * toString Method
+     * @return name
+     */
     public String toString(){
         return name;
+    }
+
+    /**
+     * sort Spieler by Name
+     * @param spieler
+     * @return
+     */
+    @Override
+    public int compareTo(Spieler spieler) {
+        return this.getName().compareTo(spieler.getName());
     }
 }

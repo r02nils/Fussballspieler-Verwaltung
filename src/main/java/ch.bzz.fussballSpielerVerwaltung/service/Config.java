@@ -9,18 +9,19 @@ import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
 
-/**
+ /**
  * configure the web services and properties
- * <p>
- * M151: BookDB
+ * M133: Fussballspieler-Verwaltung
  *
- * @author Marcel Suter (Ghwalin)
+ * @author Nils Rothenbühler
+ * @version 1.0
+ * @date 13.03.2021
  */
 
 @ApplicationPath("/resource")
 
 public class Config extends Application {
-    private static final String PROPERTIES_PATH = "/home/bzz/webapp/book.properties";
+    private static final String PROPERTIES_PATH = "/home/bzz/webapp/spieler.properties";
     private static Properties properties = null;
 
     /**
@@ -32,6 +33,10 @@ public class Config extends Application {
     public Set<Class<?>> getClasses() {
         HashSet providers = new HashSet<Class<?>>();
         providers.add(SpielerService.class);
+        providers.add(NationService.class);
+        providers.add(PositionService.class);
+        providers.add(TeamService.class);
+        providers.add(LigaService.class);
         return providers;
     }
 
