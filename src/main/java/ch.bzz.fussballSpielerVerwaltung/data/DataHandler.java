@@ -157,7 +157,7 @@ public class DataHandler{
      * @return nation-vector
      */
     public static Nation readNationByID(int id) {
-        Nation nation = null;
+        Nation nation = new Nation();
         for (int i = 0; i < natVector.size(); i++) {
             if(natVector.get(i).getNatID() == id){
                 nation = natVector.get(i);
@@ -190,7 +190,7 @@ public class DataHandler{
      * @return position-vector
      */
     public static Position readPositionByID(int id) {
-        Position position = null;
+        Position position = new Position();
         for (int i = 0; i < posVector.size(); i++) {
             if(posVector.get(i).getPosID() == id){
                 position = posVector.get(i);
@@ -223,7 +223,7 @@ public class DataHandler{
      * @return team-vector
      */
     public static Team readTeamByID(int id) {
-        Team team = null;
+        Team team = new Team();
         for (int i = 0; i < teamVector.size(); i++) {
             if(teamVector.get(i).getTeamID() == id){
                 team = teamVector.get(i);
@@ -256,7 +256,7 @@ public class DataHandler{
      * @return liga-vector
      */
     public static Liga readLigaByID(int id) {
-        Liga liga = null;
+        Liga liga = new Liga();
         for (int i = 0; i < ligaVector.size(); i++) {
             if(ligaVector.get(i).getLigaID() == id){
                 liga = ligaVector.get(i);

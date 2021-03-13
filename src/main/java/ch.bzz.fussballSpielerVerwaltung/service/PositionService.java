@@ -73,10 +73,22 @@ public class PositionService {
             @QueryParam("id") int id
     ) throws IOException {
         Position position = null;
-        position = DataHandler.readPositionByID(id);
+
+        int httpStatus;
+
+        try {
+            position = DataHandler.readPositionByID(id);
+            if (position.getPos() != null) {
+                httpStatus = 200;
+            } else {
+                httpStatus = 404;
+            }
+        } catch (IllegalArgumentException argEx) {
+            httpStatus = 400;
+        }
 
         Response response = Response
-                .status(200)
+                .status(httpStatus)
                 .entity(position)
                 .build();
 

@@ -23,6 +23,10 @@ public class Position {
         this.pos = pos;
     }
 
+    public Position(){
+
+    }
+
     /**
      * get id
      * @return posID

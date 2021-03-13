@@ -73,10 +73,22 @@ public class TeamService {
             @QueryParam("id") int id
     ) throws IOException {
         Team team = null;
-        team = DataHandler.readTeamByID(id);
+
+        int httpStatus;
+
+        try {
+            team = DataHandler.readTeamByID(id);
+            if (team.getTeam() != null) {
+                httpStatus = 200;
+            } else {
+                httpStatus = 404;
+            }
+        } catch (IllegalArgumentException argEx) {
+            httpStatus = 400;
+        }
 
         Response response = Response
-                .status(200)
+                .status(httpStatus)
                 .entity(team)
                 .build();
 

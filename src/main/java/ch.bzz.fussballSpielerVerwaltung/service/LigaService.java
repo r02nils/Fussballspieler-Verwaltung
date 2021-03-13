@@ -74,10 +74,21 @@ public class LigaService {
             @QueryParam("id") int id
     ) throws IOException {
         Liga liga = null;
-        liga = DataHandler.readLigaByID(id);
 
+        int httpStatus;
+
+        try {
+            liga = DataHandler.readLigaByID(id);
+            if (liga.getLiga() != null) {
+                httpStatus = 200;
+            } else {
+                httpStatus = 404;
+            }
+        } catch (IllegalArgumentException argEx) {
+            httpStatus = 400;
+        }
         Response response = Response
-                .status(200)
+                .status(httpStatus)
                 .entity(liga)
                 .build();
 

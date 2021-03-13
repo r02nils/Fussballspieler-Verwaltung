@@ -27,6 +27,10 @@ public class Nation {
         this.imagePath = imagePath;
     }
 
+    public Nation(){
+
+    }
+
     /**
      * get id
      * @return natID

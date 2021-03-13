@@ -29,6 +29,10 @@ public class Team {
         this.liga = liga;
     }
 
+    public Team(){
+
+    }
+
     /**
      * get ID
      * @return teamID

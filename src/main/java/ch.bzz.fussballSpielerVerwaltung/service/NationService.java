@@ -73,10 +73,22 @@ public class NationService {
             @QueryParam("id") int id
     ) throws IOException {
         Nation nation = null;
-        nation = DataHandler.readNationByID(id);
+
+        int httpStatus;
+
+        try {
+            nation = DataHandler.readNationByID(id);
+            if (nation.getNat() != null) {
+                httpStatus = 200;
+            } else {
+                httpStatus = 404;
+            }
+        } catch (IllegalArgumentException argEx) {
+            httpStatus = 400;
+        }
 
         Response response = Response
-                .status(200)
+                .status(httpStatus)
                 .entity(nation)
                 .build();
 

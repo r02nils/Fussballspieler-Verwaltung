@@ -28,6 +28,10 @@ public class Liga {
         ligaID++;
     }
 
+    public Liga(){
+
+    }
+
     /**
      * get id
      * @return ligaID
