@@ -2,10 +2,18 @@ package ch.bzz.fussballSpielerVerwaltung.service;
 
 import ch.bzz.fussballSpielerVerwaltung.data.DataHandler;
 import ch.bzz.fussballSpielerVerwaltung.model.Spieler;
+import ch.bzz.fussballSpielerVerwaltung.model.Nation;
+import ch.bzz.fussballSpielerVerwaltung.model.Team;
+import ch.bzz.fussballSpielerVerwaltung.model.Position;
+import ch.bzz.fussballSpielerVerwaltung.model.Liga;
 
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.util.Vector;
 
@@ -20,6 +28,36 @@ import java.util.Vector;
 @Path("spieler")
 public class SpielerService {
 
+    @POST
+    @Path("create")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response create(
+            @FormParam("name") String name,
+
+            @FormParam("nation") String nation,
+
+            @FormParam("team") String team,
+
+            @FormParam("liga") String liga,
+
+            @FormParam("position") String position
+
+    ){
+        Nation n = new Nation(DataHandler.getNationC()+1,nation,"1.png");
+        Liga l = new Liga(DataHandler.getLigaC()+1,liga, "4.png");
+        Team t = new Team(DataHandler.getTeamC()+1,team, "5.png", l);
+        Position p = new Position(DataHandler.getPositionC()+1,position);
+        Spieler s = new Spieler(DataHandler.getSpielerC()+1,name, t,n,p,"8.png");
+
+        DataHandler.saveSpieler(s);
+
+        Response response = Response
+                .status(200)
+                .entity("")
+                .build();
+
+        return response;
+    }
     /**
      * Get JSON of all Spieler
      * @return response

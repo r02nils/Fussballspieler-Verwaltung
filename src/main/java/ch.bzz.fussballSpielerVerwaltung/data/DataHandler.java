@@ -37,6 +37,26 @@ public class DataHandler{
     private static int teamC;
     private static int ligaC;
 
+    public static int getSpielerC() {
+        return spielerC;
+    }
+
+    public static int getNationC() {
+        return nationC;
+    }
+
+    public static int getPositionC() {
+        return positionC;
+    }
+
+    public static int getTeamC() {
+        return teamC;
+    }
+
+    public static int getLigaC() {
+        return ligaC;
+    }
+
     /**
      * default constructor: defeat instantiation
      */
@@ -47,7 +67,7 @@ public class DataHandler{
         posVector = new Vector<>();
         natVector = new Vector<>();
 
-        readJSON();
+        spielerVector = readJSON();
     }
 
     /**
@@ -325,7 +345,7 @@ public class DataHandler{
     /**
      * reads the spieler from JSON
      */
-    private static void readJSON(){
+    private static Vector<Spieler> readJSON(){
         Vector<Spieler> s = new Vector<>();
         Spieler spieler= new Spieler();
         Gson gson = new Gson();
@@ -341,17 +361,16 @@ public class DataHandler{
                         gson.fromJson(arrayList.get(i),
                                 Spieler.class);
 
-                spielerVector.add(spieler);
-
-                System.out.println(spieler);
-
                 getAllreadMethods(spieler);
+
+                s.add(spieler);
             }
         }
         catch (Exception e){
 
         }
         getAllIDs();
+        return s;
     }
 
     /**
@@ -359,17 +378,10 @@ public class DataHandler{
      */
     private static void writeJSON(){
         try{
-            readJSON();
             Gson gson = new Gson();
+
             Writer writer = new FileWriter(Config.getProperty("spielerJSON"));
 
-            Nation n = new Nation(nationC+1,"Portugal", "2.png");
-            Liga l = new Liga(ligaC+1,"Serie A", "4.png");
-            Team t = new Team(teamC+1,"Juventus Turin", "5.png", l);
-            Position p = new Position(positionC+1,"ST");
-            Spieler s = new Spieler(spielerC+1,"Cristiano Ronaldo", t,n,p,"8.png");
-
-            spielerVector.add(s);
             gson.toJson(spielerVector, writer);
             writer.close();
         }
@@ -530,5 +542,9 @@ public class DataHandler{
         getTeamID();
         getPositionID();
         getLigaID();
+    }
+
+    public static void main(String[] args) {
+        writeJSON();
     }
 }
