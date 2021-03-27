@@ -1,12 +1,10 @@
 package ch.bzz.fussballSpielerVerwaltung.service;
 
 import ch.bzz.fussballSpielerVerwaltung.data.DataHandler;
+import ch.bzz.fussballSpielerVerwaltung.model.Nation;
 import ch.bzz.fussballSpielerVerwaltung.model.Position;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
@@ -22,6 +20,62 @@ import java.util.Vector;
  */
 @Path("position")
 public class PositionService {
+
+    @POST
+    @Path("create")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response create(
+            @FormParam("name")String name
+    ){
+        DataHandler.getPositionID();
+
+        Position position = new Position(DataHandler.getPositionC()+1, name);
+
+        DataHandler.savePosition(position);
+
+        Response response = Response
+                .status(200)
+                .entity("")
+                .build();
+
+        return response;
+    }
+
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response delete(
+            @QueryParam("id") int id
+    ){
+
+        DataHandler.deletePosition(id);
+
+        Response response = Response
+                .status(200)
+                .entity("")
+                .build();
+
+        return response;
+    }
+
+    @POST
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response update(
+            @FormParam("id")int id,
+            @FormParam("name")String name
+    ){
+        Position position = new Position(id, name);
+
+        DataHandler.updatePosition(position);
+
+        Response response = Response
+                .status(200)
+                .entity("")
+                .build();
+
+        return response;
+    }
 
     /**
      * Get JSON of all Positions

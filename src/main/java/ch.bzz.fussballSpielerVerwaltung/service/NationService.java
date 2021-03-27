@@ -32,10 +32,47 @@ public class NationService {
     public Response create(
             @FormParam("name")String name
     ){
-        DataHandler.getAllIDs();
+        DataHandler.getNationID();
+
         Nation nation = new Nation(DataHandler.getNationC()+1, name, "1.png");
 
         DataHandler.saveNation(nation);
+
+        Response response = Response
+                .status(200)
+                .entity("")
+                .build();
+
+        return response;
+    }
+
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response delete(
+            @QueryParam("id") int id
+    ){
+
+        DataHandler.deleteNation(id);
+
+        Response response = Response
+                .status(200)
+                .entity("")
+                .build();
+
+        return response;
+    }
+
+    @POST
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response update(
+            @FormParam("id")int id,
+            @FormParam("name")String name
+    ){
+        Nation nation = new Nation(id, name, "1.png");
+
+        DataHandler.updateNation(nation);
 
         Response response = Response
                 .status(200)

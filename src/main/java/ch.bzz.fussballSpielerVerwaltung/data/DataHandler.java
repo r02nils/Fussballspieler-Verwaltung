@@ -69,6 +69,9 @@ public class DataHandler{
 
         spielerVector = readJSON();
         natVector = readNationJSON();
+        ligaVector = readLigaJSON();
+        teamVector = readTeamJSON();
+        posVector = readPositionJSON();
     }
 
     /**
@@ -292,15 +295,209 @@ public class DataHandler{
      * @param spieler
      */
     public static void saveSpieler(Spieler spieler) {
-        getSpielerVector().add(spieler);
-        writeJSON();
+        int check = 0;
+        for (int i = 0; i < spielerVector.size(); i++) {
+            if (spielerVector.get(i).getName().equals(spieler.getName())){
+                check = 1;
+            }
+            else{
+
+            }
+        }
+        if(check == 0){
+            getSpielerVector().add(spieler);
+            writeJSON();
+            spielerVector = readJSON();
+        }
     }
 
     public static void saveNation(Nation nation) {
-        getNatVector().add(nation);
+        int check = 0;
+        for (int i = 0; i < natVector.size(); i++) {
+            if (natVector.get(i).getNat().equals(nation.getNat())){
+                check = 1;
+            }
+            else{
+
+            }
+        }
+        if(check == 0){
+            getNatVector().add(nation);
+            writeNationJSON();
+            natVector = readNationJSON();
+        }
+    }
+
+    public static void saveTeam(Team team) {
+        int check = 0;
+        for (int i = 0; i < teamVector.size(); i++) {
+            if (teamVector.get(i).getTeam().equals(team.getTeam())){
+                check = 1;
+            }
+            else{
+
+            }
+        }
+        if(check == 0){
+            getTeamVector().add(team);
+            writeTeamJSON();
+            teamVector = readTeamJSON();
+        }
+    }
+
+    public static void saveLiga(Liga liga) {
+        int check = 0;
+        for (int i = 0; i < ligaVector.size(); i++) {
+            if (ligaVector.get(i).getLiga().equals(liga.getLiga())){
+                check = 1;
+            }
+            else{
+
+            }
+        }
+        if(check == 0){
+            getLigaVector().add(liga);
+            writeLigaJSON();
+            ligaVector = readLigaJSON();
+        }
+    }
+    public static void savePosition(Position position) {
+        int check = 0;
+        for (int i = 0; i < posVector.size(); i++) {
+            if (posVector.get(i).getPos().equals(position.getPos())){
+                check = 1;
+            }
+            else{
+
+            }
+        }
+        if(check == 0){
+            getPosVector().add(position);
+            writePositionJSON();
+            posVector = readPositionJSON();
+        }
+    }
+
+    public static void deleteSpieler(int x){
+        spielerVector.remove(x-1);
+        writeJSON();
+        spielerVector = readJSON();
+    }
+
+    public static void deleteNation(int x){
+        for (int i = 0; i < natVector.size(); i++) {
+            if(natVector.get(i).getNatID() == x){
+                natVector.remove(i);
+                break;
+            }
+        }
         writeNationJSON();
         natVector = readNationJSON();
     }
+
+    public static void deletePosition(int x){
+        for (int i = 0; i < posVector.size(); i++) {
+            if(posVector.get(i).getPosID() == x){
+                posVector.remove(i);
+                break;
+            }
+        }
+        writePositionJSON();
+        posVector = readPositionJSON();
+    }
+
+    public static void deleteTeam(int x){
+        for (int i = 0; i < teamVector.size(); i++) {
+            if(teamVector.get(i).getTeamID() == x){
+                teamVector.remove(i);
+                break;
+            }
+        }
+        writeTeamJSON();
+        teamVector = readTeamJSON();
+    }
+
+    public static void deleteLiga(int x){
+        for (int i = 0; i < ligaVector.size(); i++) {
+            if(ligaVector.get(i).getLigaID() == x){
+                ligaVector.remove(i);
+                break;
+            }
+        }
+        writeLigaJSON();
+        ligaVector = readLigaJSON();
+    }
+
+    public static void updateNation(Nation nation){
+        for (int i = 0; i < natVector.size(); i++) {
+            if(natVector.get(i).getNatID() == nation.getNatID()){
+                natVector.set(i, nation);
+                break;
+            }
+        }
+        writeNationJSON();
+        natVector = readNationJSON();
+    }
+
+    public static void updateTeam(Team team){
+        for (int i = 0; i < teamVector.size(); i++) {
+            if(teamVector.get(i).getTeamID() == team.getTeamID()){
+                teamVector.set(i, team);
+                break;
+            }
+        }
+        writeTeamJSON();
+        teamVector = readTeamJSON();
+    }
+
+    public static void updateLiga(Liga liga){
+        for (int i = 0; i < ligaVector.size(); i++) {
+            if(ligaVector.get(i).getLigaID() == liga.getLigaID()){
+                ligaVector.set(i, liga);
+                break;
+            }
+        }
+        writeLigaJSON();
+        ligaVector = readLigaJSON();
+    }
+
+    public static void updateSpieler(Spieler spieler){
+        for (int i = 0; i < spielerVector.size(); i++) {
+            if(spielerVector.get(i).getSpielerID() == spieler.getSpielerID()){
+                spielerVector.set(i, spieler);
+                break;
+            }
+        }
+        writeJSON();
+        spielerVector = readJSON();
+    }
+    public static void updatePosition(Position position){
+        for (int i = 0; i < posVector.size(); i++) {
+            if(posVector.get(i).getPosID() == position.getPosID()){
+                posVector.set(i, position);
+                break;
+            }
+        }
+        writePositionJSON();
+        posVector = readPositionJSON();
+    }
+
+    public static Liga getLigaFromTeamID(int id){
+        Team team = null;
+        for (int i = 0; i < teamVector.size(); i++) {
+            if (teamVector.get(i).getTeamID() == id){
+                team = teamVector.get(i);
+            }
+        }
+        Liga liga = null;
+        for (int i = 0; i < ligaVector.size(); i++) {
+            if(ligaVector.get(i).getLigaID() == team.getLiga().getLigaID()){
+                liga = team.getLiga();
+            }
+        }
+        return liga;
+    }
+
 
     /**
      * gets the spielervector
@@ -373,7 +570,7 @@ public class DataHandler{
         catch (Exception e){
 
         }
-        getAllIDs();
+        getSpielerID();
         return s;
     }
 
@@ -399,8 +596,86 @@ public class DataHandler{
         catch (Exception e){
 
         }
-        getAllIDs();
+        getNationID();
         return s;
+    }
+
+    private static Vector<Team> readTeamJSON(){
+        Vector<Team> t = new Vector<>();
+        Team team = null;
+        Gson gson = new Gson();
+        try{
+            BufferedReader reader = Files.newBufferedReader(Paths.get(Config.getProperty("teamJSON")));
+            String line = reader.readLine();
+
+            String[] splits =  line.replace("[","").replace("]","")
+                    .replace("},{", "}},{{").split("\\},\\{");
+            ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(splits));
+            for (int i = 0; i < arrayList.size(); i++) {
+                team =
+                        gson.fromJson(arrayList.get(i),
+                                Team.class);
+
+                t.add(team);
+            }
+        }
+        catch (Exception e){
+
+        }
+        getTeamID();
+        return t;
+    }
+
+    private static Vector<Liga> readLigaJSON(){
+        Vector<Liga> l = new Vector<>();
+        Liga liga = null;
+        Gson gson = new Gson();
+        try{
+            BufferedReader reader = Files.newBufferedReader(Paths.get(Config.getProperty("ligaJSON")));
+            String line = reader.readLine();
+
+            String[] splits =  line.replace("[","").replace("]","")
+                    .replace("},{", "}},{{").split("\\},\\{");
+            ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(splits));
+            for (int i = 0; i < arrayList.size(); i++) {
+                liga =
+                        gson.fromJson(arrayList.get(i),
+                                Liga.class);
+
+                l.add(liga);
+            }
+        }
+        catch (Exception e){
+
+        }
+        getLigaID();
+        return l;
+    }
+
+    private static Vector<Position> readPositionJSON(){
+        Vector<Position> p = new Vector<>();
+        Position pos = null;
+        Gson gson = new Gson();
+        try{
+            BufferedReader reader = Files.newBufferedReader(Paths.get(Config.getProperty("positionJSON")));
+            String line = reader.readLine();
+
+            String[] splits =  line.replace("[","").replace("]","")
+                    .replace("},{", "}},{{").split("\\},\\{");
+            ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(splits));
+            for (int i = 0; i < arrayList.size(); i++) {
+                pos =
+                        gson.fromJson(arrayList.get(i),
+                                Position.class);
+
+                p.add(pos);
+            }
+        }
+        catch (Exception e){
+
+        }
+        getPositionID();
+        return p;
     }
 
     /**
@@ -427,6 +702,48 @@ public class DataHandler{
             Writer writer = new FileWriter(Config.getProperty("nationJSON"));
 
             gson.toJson(natVector, writer);
+            writer.close();
+        }
+        catch (Exception e){
+
+        }
+    }
+
+    private static void writeTeamJSON(){
+        try{
+            Gson gson = new Gson();
+
+            Writer writer = new FileWriter(Config.getProperty("teamJSON"));
+
+            gson.toJson(teamVector, writer);
+            writer.close();
+        }
+        catch (Exception e){
+
+        }
+    }
+
+    private static void writeLigaJSON(){
+        try{
+            Gson gson = new Gson();
+
+            Writer writer = new FileWriter(Config.getProperty("ligaJSON"));
+
+            gson.toJson(ligaVector, writer);
+            writer.close();
+        }
+        catch (Exception e){
+
+        }
+    }
+
+    private static void writePositionJSON(){
+        try{
+            Gson gson = new Gson();
+
+            Writer writer = new FileWriter(Config.getProperty("positionJSON"));
+
+            gson.toJson(posVector, writer);
             writer.close();
         }
         catch (Exception e){
@@ -499,96 +816,10 @@ public class DataHandler{
         ligaC = highest;
     }
 
-    /**
-     * reads Nations from JSON without Duplicates
-     * @param spieler
-     */
-    public static void readNations(Spieler spieler){
-        int check = 0;
-
-        for (int j = 0; j < natVector.size(); j++) {
-            if (natVector.get(j).getNat().contains(spieler.getNat().getNat())) {
-                check = 1;
-            }
-        }
-        if(check == 0){
-            natVector.add(spieler.getNat());
-        }
-    }
-
-    /**
-     * read Teams from JSON without Duplicates
-     * @param spieler
-     */
-    public static void readTeams(Spieler spieler){
-        int check = 0;
-
-        for (int j = 0; j < teamVector.size(); j++) {
-            if (teamVector.get(j).getTeam().contains(spieler.getTeam().getTeam())) {
-                check = 1;
-            }
-        }
-        if(check == 0){
-            teamVector.add(spieler.getTeam());
-        }
-    }
-
-    /**
-     * read Ligas from JSON without Duplicates
-     * @param spieler
-     */
-    public static void readLigas(Spieler spieler){
-        int check = 0;
-
-        for (int j = 0; j < ligaVector.size(); j++) {
-            if (ligaVector.get(j).getLiga().contains(spieler.getTeam().getLiga().getLiga())) {
-                check = 1;
-            }
-        }
-        if(check == 0){
-            ligaVector.add(spieler.getTeam().getLiga());
-        }
-    }
-
-    /**
-     * read Positions from JSON without Duplicates
-     * @param spieler
-     */
-    public static void readPositions(Spieler spieler){
-        int check = 0;
-
-        for (int j = 0; j < posVector.size(); j++) {
-            if (posVector.get(j).getPos().contains(spieler.getPos().getPos())) {
-                check = 1;
-            }
-        }
-        if(check == 0){
-            posVector.add(spieler.getPos());
-        }
-    }
-
-    /**
-     * run all 4 read Methods
-     */
-    public static void getAllreadMethods(Spieler spieler){
-        readNations(spieler);
-        readTeams(spieler);
-        readLigas(spieler);
-        readPositions(spieler);
-    }
-
-    /**
-     * run all 5 getID Methods
-     */
-    public static void getAllIDs(){
-        getSpielerID();
-        getNationID();
-        getTeamID();
-        getPositionID();
-        getLigaID();
-    }
-
     public static void main(String[] args) {
-        writeJSON();
+        ligaVector = readLigaJSON();
+        for (int i = 0; i < ligaVector.size(); i++) {
+            System.out.println(ligaVector.get(i).getLiga());
+        }
     }
 }

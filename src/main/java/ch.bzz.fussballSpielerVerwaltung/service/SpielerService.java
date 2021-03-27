@@ -41,16 +41,47 @@ public class SpielerService {
             @FormParam("liga") String liga,
 
             @FormParam("position") String position
-
     ){
+        DataHandler.getSpielerID();
+        DataHandler.getNationID();
+        DataHandler.getTeamID();
+        DataHandler.getLigaVector();
+        DataHandler.getPositionID();
 
-        DataHandler.getAllIDs();
         Nation n = new Nation(DataHandler.getNationC()+1,nation,"1.png");
-        Liga l = new Liga(DataHandler.getLigaC()+1,liga, "4.png");
-        Team t = new Team(DataHandler.getTeamC()+1,team, "5.png", l);
-        Position p = new Position(DataHandler.getPositionC()+1,position);
-        Spieler s = new Spieler(DataHandler.getSpielerC()+1,name, t,n,p,"8.png");
+        for (int i = 0; i < DataHandler.getNatVector().size(); i++) {
+            if(DataHandler.getNatVector().get(i).getNat().equals(n.getNat())){
+                n = DataHandler.getNatVector().get(i);
+            }
+        }
 
+        Liga l = new Liga(DataHandler.getLigaC()+1,liga, "1.png");
+        for (int i = 0; i < DataHandler.getLigaVector().size(); i++) {
+            if(DataHandler.getLigaVector().get(i).getLiga().equals(l.getLiga())){
+                l = DataHandler.getLigaVector().get(i);
+            }
+        }
+
+        Team t = new Team(DataHandler.getTeamC()+1,team, "1.png", l);
+        for (int i = 0; i < DataHandler.getTeamVector().size(); i++) {
+            if(DataHandler.getTeamVector().get(i).getTeam().equals(t.getTeam())){
+                t = DataHandler.getTeamVector().get(i);
+            }
+        }
+
+        Position p = new Position(DataHandler.getPositionC()+1,position);
+        for (int i = 0; i < DataHandler.getPosVector().size(); i++) {
+            if(DataHandler.getPosVector().get(i).getPos().equals(p.getPos())){
+                p = DataHandler.getPosVector().get(i);
+            }
+        }
+
+        Spieler s = new Spieler(DataHandler.getSpielerC()+1,name, t,n,p,"1.png");
+
+        DataHandler.saveNation(n);
+        DataHandler.saveLiga(l);
+        DataHandler.saveTeam(t);
+        DataHandler.savePosition(p);
         DataHandler.saveSpieler(s);
 
         Response response = Response
@@ -60,6 +91,81 @@ public class SpielerService {
 
         return response;
     }
+
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response delete(
+            @QueryParam("id") int id
+    ){
+
+        DataHandler.deleteSpieler(id);
+
+        Response response = Response
+                .status(200)
+                .entity("")
+                .build();
+
+        return response;
+    }
+
+    @POST
+    @Path("update")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response update(
+            @FormParam("id")int id,
+            @FormParam("name") String name,
+            @FormParam("nation") String nation,
+            @FormParam("team") String team,
+            @FormParam("liga") String liga,
+            @FormParam("position") String position
+    ){
+        DataHandler.getSpielerID();
+        DataHandler.getNationID();
+        DataHandler.getTeamID();
+        DataHandler.getLigaVector();
+        DataHandler.getPositionID();
+
+        Nation n = new Nation(DataHandler.getNationC()+1,nation,"1.png");
+        for (int i = 0; i < DataHandler.getNatVector().size(); i++) {
+            if(DataHandler.getNatVector().get(i).getNat().equals(n.getNat())){
+                n = DataHandler.getNatVector().get(i);
+            }
+        }
+
+        Liga l = new Liga(DataHandler.getLigaC()+1,liga, "1.png");
+        for (int i = 0; i < DataHandler.getLigaVector().size(); i++) {
+            if(DataHandler.getLigaVector().get(i).getLiga().equals(l.getLiga())){
+                l = DataHandler.getLigaVector().get(i);
+            }
+        }
+
+        Team t = new Team(DataHandler.getTeamC()+1,team, "1.png", l);
+        for (int i = 0; i < DataHandler.getTeamVector().size(); i++) {
+            if(DataHandler.getTeamVector().get(i).getTeam().equals(t.getTeam())){
+                t = DataHandler.getTeamVector().get(i);
+            }
+        }
+
+        Position p = new Position(DataHandler.getPositionC()+1,position);
+        for (int i = 0; i < DataHandler.getPosVector().size(); i++) {
+            if(DataHandler.getPosVector().get(i).getPos().equals(p.getPos())){
+                p = DataHandler.getPosVector().get(i);
+            }
+        }
+
+        Spieler s = new Spieler(id,name, t,n,p,"1.png");
+
+        DataHandler.updateSpieler(s);
+
+        Response response = Response
+                .status(200)
+                .entity("")
+                .build();
+
+        return response;
+    }
+
     /**
      * Get JSON of all Spieler
      * @return response

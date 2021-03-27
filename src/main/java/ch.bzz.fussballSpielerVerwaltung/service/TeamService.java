@@ -1,14 +1,14 @@
 package ch.bzz.fussballSpielerVerwaltung.service;
 
 import ch.bzz.fussballSpielerVerwaltung.data.DataHandler;
+import ch.bzz.fussballSpielerVerwaltung.model.Liga;
+import ch.bzz.fussballSpielerVerwaltung.model.Nation;
 import ch.bzz.fussballSpielerVerwaltung.model.Team;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.util.Vector;
 
@@ -22,6 +22,85 @@ import java.util.Vector;
  */
 @Path("team")
 public class TeamService {
+
+    @POST
+    @Path("create")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response create(
+            @FormParam("name")String name,
+            @FormParam("liga")String ligaName
+    ){
+        DataHandler.getTeamID();
+        DataHandler.getLigaID();
+
+        Liga liga = new Liga(DataHandler.getLigaC()+1, ligaName, "1.png");
+
+        for (int i = 0; i < DataHandler.getLigaVector().size(); i++) {
+            if(DataHandler.getLigaVector().get(i).getLiga().equals(liga.getLiga())){
+                liga = DataHandler.getLigaVector().get(i);
+            }
+        }
+
+        Team team = new Team(DataHandler.getTeamC()+1, name, "1.png", liga);
+
+        DataHandler.saveLiga(liga);
+        DataHandler.saveTeam(team);
+
+        Response response = Response
+                .status(200)
+                .entity("")
+                .build();
+
+        return response;
+    }
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response delete(
+            @QueryParam("id") int id
+    ){
+
+        DataHandler.deleteTeam(id);
+
+        Response response = Response
+                .status(200)
+                .entity("")
+                .build();
+
+        return response;
+    }
+
+    @POST
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response update(
+            @FormParam("id")int id,
+            @FormParam("name")String name,
+            @FormParam("liga")String ligaName
+    ){
+
+        DataHandler.getTeamID();
+        DataHandler.getLigaID();
+
+        Liga liga = new Liga(DataHandler.getLigaC()+1, ligaName, "1.png");
+
+        for (int i = 0; i < DataHandler.getLigaVector().size(); i++) {
+            if(DataHandler.getLigaVector().get(i).getLiga().equals(liga.getLiga())){
+                liga = DataHandler.getLigaVector().get(i);
+            }
+        }
+
+        Team team = new Team(DataHandler.getTeamC()+1, name, "1.png", liga);
+
+        DataHandler.updateTeam(team);
+
+        Response response = Response
+                .status(200)
+                .entity("")
+                .build();
+
+        return response;
+    }
 
     /**
      * Get JSON of all Teams
