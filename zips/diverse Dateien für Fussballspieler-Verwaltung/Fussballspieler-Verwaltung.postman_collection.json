@@ -1,0 +1,2199 @@
+{
+	"info": {
+		"_postman_id": "89137f25-1dc0-4460-9173-484d553ba3fc",
+		"name": "Fussballspieler-Verwaltung",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SpielerService",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "SpielerList",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"JSON\", function(){",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test(\"Spieler pattern\", function(){",
+											"    for(i = 0; i < pm.response.json.length-1; i++){",
+											"        pm.expect(pm.response.json()[i].name).to.match(/^[a-zA-Z ]+$/);",
+											"    }",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"spieler",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Read unknown Spieler",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(404);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/readID?id=99999",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"spieler",
+										"readID"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "99999"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SpielerSort",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"JSON\", function(){",
+											"    pm.response.to.be.json;",
+											"    pm.expect(pm.response.text()).to.include(\"name\");",
+											"});",
+											"",
+											"pm.test(\"Spieler pattern\", function(){",
+											"    for(i = 0; i < pm.response.json.length-1; i++){",
+											"        pm.expect(pm.response.json()[i].name).to.match(/^[a-zA-Z ]+$/);",
+											"    }",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/sort",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"spieler",
+										"sort"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SpielerReadID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"JSON\", function(){",
+											"    pm.response.to.be.json;",
+											"    pm.expect(pm.response.text()).to.include(\"name\");",
+											"});",
+											"",
+											"pm.test(\"Spieler pattern\", function(){",
+											"    pm.expect(pm.response.json().name).to.match(/^[a-zA-Z ]+$/);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/readID?id=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"spieler",
+										"readID"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SpielerReadName",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"JSON\", function(){",
+											"    pm.response.to.be.json;",
+											"    pm.expect(pm.response.text()).to.include(\"name\");",
+											"});",
+											"",
+											"pm.test(\"Spieler pattern\", function(){",
+											"    for(i = 0; i < pm.response.json.length-1; i++){",
+											"        pm.expect(pm.response.json()[i].name).to.match(/^[a-zA-Z ]+$/);",
+											"    }",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/readName?name=Marco Asensio",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"spieler",
+										"readName"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Marco Asensio"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SpielerReadTeam",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"JSON\", function(){",
+											"    pm.response.to.be.json;",
+											"    pm.expect(pm.response.text()).to.include(\"name\");",
+											"});",
+											"",
+											"pm.test(\"Spieler pattern\", function(){",
+											"    for(i = 0; i < pm.response.json.length-1; i++){",
+											"        pm.expect(pm.response.json()[i].name).to.match(/^[a-zA-Z ]+$/);",
+											"    }",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/readTeam?name=Real Madrid",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"spieler",
+										"readTeam"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Real Madrid"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SpielerReadNation",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"JSON\", function(){",
+											"    pm.response.to.be.json;",
+											"    pm.expect(pm.response.text()).to.include(\"name\");",
+											"});",
+											"",
+											"pm.test(\"Spieler pattern\", function(){",
+											"    for(i = 0; i < pm.response.json.length-1; i++){",
+											"        pm.expect(pm.response.json()[i].name).to.match(/^[a-zA-Z ]+$/);",
+											"    }",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/readNation?name=Spanien",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"spieler",
+										"readNation"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Spanien"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SpielerReadPosition",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"JSON\", function(){",
+											"    pm.response.to.be.json;",
+											"    pm.expect(pm.response.text()).to.include(\"name\");",
+											"});",
+											"",
+											"pm.test(\"Spieler pattern\", function(){",
+											"    for(i = 0; i < pm.response.json.length-1; i++){",
+											"        pm.expect(pm.response.json()[i].name).to.match(/^[a-zA-Z ]+$/);",
+											"    }",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/readPosition?name=LF",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"spieler",
+										"readPosition"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "LF"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "Insert Spieler",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Cristiano Ronaldo",
+											"type": "text"
+										},
+										{
+											"key": "nation",
+											"value": "Spanien",
+											"type": "text"
+										},
+										{
+											"key": "team",
+											"value": "Real Madrid",
+											"type": "text"
+										},
+										{
+											"key": "liga",
+											"value": "LaLiga",
+											"type": "text"
+										},
+										{
+											"key": "position",
+											"value": "LF",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"spieler",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Spieler",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Marco Asensio",
+											"type": "text"
+										},
+										{
+											"key": "nation",
+											"value": "Spanien",
+											"type": "text"
+										},
+										{
+											"key": "team",
+											"value": "Real Madrid",
+											"type": "text"
+										},
+										{
+											"key": "liga",
+											"value": "LaLiga",
+											"type": "text"
+										},
+										{
+											"key": "position",
+											"value": "LF",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"spieler",
+										"update"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Dont match regex",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "2387432",
+											"type": "text"
+										},
+										{
+											"key": "liga",
+											"value": "LaLiga",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/nation/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"nation",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "Delete Spieler",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/delete?id=4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"spieler",
+										"delete"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "NationService",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "NationList",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"JSON\", function(){",
+											"    pm.response.to.be.json;",
+											"    pm.expect(pm.response.text()).to.include(\"nat\");",
+											"});",
+											"",
+											"pm.test(\"Nation pattern\", function(){",
+											"    for(i = 0; i < pm.response.json.length-1; i++){",
+											"        pm.expect(pm.response.json()[i].nat).to.match(/^[a-zA-Z]+$/);",
+											"    }",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/nation/list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"nation",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Read unknown Nation",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(404);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/nation/readID?id=99999",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"nation",
+										"readID"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "99999"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "NationReadName",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"JSON\", function(){",
+											"    pm.response.to.be.json;",
+											"    pm.expect(pm.response.text()).to.include(\"nat\");",
+											"});",
+											"",
+											"pm.test(\"Nation pattern\", function(){",
+											"    for(i = 0; i < pm.response.json.length-1; i++){",
+											"        pm.expect(pm.response.json()[i].nat).to.match(/^[a-zA-Z]+$/);",
+											"    }",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/nation/readName?name=Spanien",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"nation",
+										"readName"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Spanien"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "NationReadID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"JSON\", function(){",
+											"    pm.response.to.be.json;",
+											"    pm.expect(pm.response.text()).to.include(\"nat\");",
+											"});",
+											"",
+											"pm.test(\"Nation pattern\", function(){",
+											"        pm.expect(pm.response.json().nat).to.match(/^[a-zA-Z]+$/);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/nation/readID?id=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"nation",
+										"readID"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "Insert Nation",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Portugal",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/nation/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"nation",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Nation",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Portugal",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/nation/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"nation",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Dont match regex",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "2387432",
+											"type": "text"
+										},
+										{
+											"key": "liga",
+											"value": "LaLiga",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/nation/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"nation",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "Delete Nation",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/nation/update?id=4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"nation",
+										"update"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "TeamService",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "TeamList",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"JSON\", function(){",
+											"    pm.response.to.be.json;",
+											"    pm.expect(pm.response.text()).to.include(\"team\");",
+											"});",
+											"",
+											"pm.test(\"Nation pattern\", function(){",
+											"    for(i = 0; i < pm.response.json.length-1; i++){",
+											"        pm.expect(pm.response.json()[i].team).to.match(/^[a-zA-Z ]+$/);",
+											"    }",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/team/list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"team",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Read unknown Team",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(404);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/team/readID?id=99999",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"team",
+										"readID"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "99999"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TeamReadName",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"JSON\", function(){",
+											"    pm.response.to.be.json;",
+											"    pm.expect(pm.response.text()).to.include(\"team\");",
+											"});",
+											"",
+											"pm.test(\"Nation pattern\", function(){",
+											"    for(i = 0; i < pm.response.json.length-1; i++){",
+											"        pm.expect(pm.response.json()[i].team).to.match(/^[a-zA-Z ]+$/);",
+											"    }",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/team/readName?name=Real Madrid",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"team",
+										"readName"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Real Madrid"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TeamReadID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"JSON\", function(){",
+											"    pm.response.to.be.json;",
+											"    pm.expect(pm.response.text()).to.include(\"team\");",
+											"});",
+											"",
+											"pm.test(\"Nation pattern\", function(){",
+											"        pm.expect(pm.response.json().team).to.match(/^[a-zA-Z ]+$/);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/team/readID?id=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"team",
+										"readID"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "Insert Team",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/team/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"team",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Dont match regex",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "2387432",
+											"type": "text"
+										},
+										{
+											"key": "liga",
+											"value": "LaLiga",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/team/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"team",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Team",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/team/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"team",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "Delete Team",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/team/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"team",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "PositionService",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "PositionList",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"JSON\", function(){",
+											"    pm.response.to.be.json;",
+											"    pm.expect(pm.response.text()).to.include(\"pos\");",
+											"});",
+											"",
+											"pm.test(\"Nation pattern\", function(){",
+											"    for(i = 0; i < pm.response.json.length-1; i++){",
+											"        pm.expect(pm.response.json()[i].pos).to.match(/^[a-zA-Z ]+$/);",
+											"    }",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/position/list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"position",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Read unknown Position",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(404);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/position/readID?id=99999",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"position",
+										"readID"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "99999"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PositionReadName",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"JSON\", function(){",
+											"    pm.response.to.be.json;",
+											"    pm.expect(pm.response.text()).to.include(\"pos\");",
+											"});",
+											"",
+											"pm.test(\"Nation pattern\", function(){",
+											"    for(i = 0; i < pm.response.json.length-1; i++){",
+											"        pm.expect(pm.response.json()[i].pos).to.match(/^[a-zA-Z]+$/);",
+											"    }",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/position/readName?name=LF",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"position",
+										"readName"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "LF"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PositionReadID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"JSON\", function(){",
+											"    pm.response.to.be.json;",
+											"    pm.expect(pm.response.text()).to.include(\"pos\");",
+											"});",
+											"",
+											"pm.test(\"Nation pattern\", function(){",
+											"        pm.expect(pm.response.json().pos).to.match(/^[a-zA-Z]+$/);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/position/list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"position",
+										"list"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "Insert Position",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "TW",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/position/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"position",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Position",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "ST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/position/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"position",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Dont match regex",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "2387432",
+											"type": "text"
+										},
+										{
+											"key": "liga",
+											"value": "LaLiga",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/team/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"team",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "Delete Position",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/position/delete?id=3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"position",
+										"delete"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "LigaService",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "LigaList",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"JSON\", function(){",
+											"    pm.response.to.be.json;",
+											"    pm.expect(pm.response.text()).to.include(\"liga\");",
+											"});",
+											"",
+											"pm.test(\"Nation pattern\", function(){",
+											"    for(i = 0; i < pm.response.json.length-1; i++){",
+											"        pm.expect(pm.response.json()[i].liga).to.match(/^[a-zA-Z ]+$/);",
+											"    }",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/liga/list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"liga",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Read unknown Liga",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(404);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/liga/readID?id=99999",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"liga",
+										"readID"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "99999"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "LigaReadName",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"JSON\", function(){",
+											"    pm.response.to.be.json;",
+											"    pm.expect(pm.response.text()).to.include(\"liga\");",
+											"});",
+											"",
+											"pm.test(\"Nation pattern\", function(){",
+											"    for(i = 0; i < pm.response.json.length-1; i++){",
+											"        pm.expect(pm.response.json()[i].liga).to.match(/^[a-zA-Z ]+$/);",
+											"    }",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/liga/readName?name=LaLiga",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"liga",
+										"readName"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "LaLiga"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "LigaReadID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"JSON\", function(){",
+											"    pm.response.to.be.json;",
+											"    pm.expect(pm.response.text()).to.include(\"liga\");",
+											"});",
+											"",
+											"pm.test(\"Nation pattern\", function(){",
+											"        pm.expect(pm.response.json().liga).to.match(/^[a-zA-Z ]+$/);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/liga/readID?id=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"liga",
+										"readID"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "Insert Liga",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "TW",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/liga/create?name=Bundesliga",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"liga",
+										"create"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Bundesliga"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Liga",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "TW",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/liga/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"liga",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Dont match regex",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "2387432",
+											"type": "text"
+										},
+										{
+											"key": "liga",
+											"value": "LaLiga",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/team/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"team",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "Delete Liga",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status test\", function(){",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "TW",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/liga/delete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Fussballspieler-Verwaltung-1.0",
+										"resource",
+										"liga",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

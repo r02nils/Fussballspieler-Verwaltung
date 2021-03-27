@@ -5,6 +5,9 @@ import ch.bzz.fussballSpielerVerwaltung.model.Liga;
 import ch.bzz.fussballSpielerVerwaltung.model.Nation;
 import ch.bzz.fussballSpielerVerwaltung.model.Team;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -27,8 +30,16 @@ public class TeamService {
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response create(
-            @FormParam("name")String name,
-            @FormParam("liga")String ligaName
+            @FormParam("name")
+            @NotEmpty
+            @Pattern(regexp="^[a-zA-Z ]+$")
+            @Size(min=2, max=40)
+                    String name,
+            @FormParam("liga")
+            @NotEmpty
+            @Pattern(regexp="^[a-zA-Z0-9 ]+$")
+            @Size(min=2, max=40)
+                    String ligaName
     ){
         DataHandler.getTeamID();
         DataHandler.getLigaID();

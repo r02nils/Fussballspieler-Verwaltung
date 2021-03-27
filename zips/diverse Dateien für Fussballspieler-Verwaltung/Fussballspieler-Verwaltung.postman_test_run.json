@@ -1,0 +1,1601 @@
+{
+	"id": "5517c221-b69d-4170-b30c-4e3706009e3f",
+	"name": "Fussballspieler-Verwaltung",
+	"timestamp": "2021-03-27T20:00:19.504Z",
+	"collection_id": "89137f25-1dc0-4460-9173-484d553ba3fc",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 81,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "55479e16-86ad-4147-8c44-a920849a7c9a",
+			"name": "SpielerList",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/list",
+			"time": 266,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"JSON": true,
+				"Spieler pattern": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Spieler pattern": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				266
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"JSON": true,
+					"Spieler pattern": true
+				}
+			]
+		},
+		{
+			"id": "1a9f5af8-bae2-4bda-8f4d-16f8144deb13",
+			"name": "Read unknown Spieler",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/readID?id=99999",
+			"time": 104,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				104
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "0947a072-0a7b-4605-8790-d6e277d35457",
+			"name": "SpielerSort",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/sort",
+			"time": 66,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"JSON": true,
+				"Spieler pattern": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Spieler pattern": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				66
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"JSON": true,
+					"Spieler pattern": true
+				}
+			]
+		},
+		{
+			"id": "9f6b4457-fa6a-43c4-9640-a6620e1e7197",
+			"name": "SpielerReadID",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/readID?id=1",
+			"time": 39,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true,
+				"JSON": true,
+				"Spieler pattern": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Spieler pattern": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				39
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"JSON": true,
+					"Spieler pattern": true
+				}
+			]
+		},
+		{
+			"id": "6aeff234-8546-4f7f-82d2-d50dc18694e2",
+			"name": "SpielerReadName",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/readName?name=Marco%20Asensio",
+			"time": 40,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"JSON": true,
+				"Spieler pattern": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Spieler pattern": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				40
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"JSON": true,
+					"Spieler pattern": true
+				}
+			]
+		},
+		{
+			"id": "3dd75cfb-a347-4f63-8e6d-23930d98af18",
+			"name": "SpielerReadTeam",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/readTeam?name=Real%20Madrid",
+			"time": 34,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"JSON": true,
+				"Spieler pattern": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Spieler pattern": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				34
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"JSON": true,
+					"Spieler pattern": true
+				}
+			]
+		},
+		{
+			"id": "aad800db-6348-4246-8b48-189d02660d73",
+			"name": "SpielerReadNation",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/readNation?name=Spanien",
+			"time": 44,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"JSON": true,
+				"Spieler pattern": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Spieler pattern": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				44
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"JSON": true,
+					"Spieler pattern": true
+				}
+			]
+		},
+		{
+			"id": "57742f9b-96fe-4c1d-8e8e-89028989e443",
+			"name": "SpielerReadPosition",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/readPosition?name=LF",
+			"time": 228,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"JSON": true,
+				"Spieler pattern": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Spieler pattern": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				228
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"JSON": true,
+					"Spieler pattern": true
+				}
+			]
+		},
+		{
+			"id": "7f84a50a-7be8-4337-a929-3a0930c47373",
+			"name": "Insert Spieler",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/create",
+			"time": 323,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				323
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "fb70c7a0-9a10-468a-9b9c-7e6f673792e8",
+			"name": "Update Spieler",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/update",
+			"time": 312,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				312
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ca0140a6-f8b7-4c96-9f81-6973c0c724e0",
+			"name": "Dont match regex",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/nation/create",
+			"time": 887,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				887
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "864bc356-aa57-480a-9ecf-4f06749dcbbb",
+			"name": "Delete Spieler",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/delete?id=4",
+			"time": 97,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				97
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "95602f0d-c85c-4658-8207-e70a732f2e0f",
+			"name": "NationList",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/nation/list",
+			"time": 38,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"JSON": true,
+				"Nation pattern": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nation pattern": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				38
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"JSON": true,
+					"Nation pattern": true
+				}
+			]
+		},
+		{
+			"id": "89f4e1bf-397a-45ab-bfda-383b8e5f2141",
+			"name": "Read unknown Nation",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/nation/readID?id=99999",
+			"time": 40,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				40
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "c64126f6-be37-4eb3-8d2e-f83a5950c312",
+			"name": "NationReadName",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/nation/readName?name=Spanien",
+			"time": 70,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"JSON": true,
+				"Nation pattern": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nation pattern": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				70
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"JSON": true,
+					"Nation pattern": true
+				}
+			]
+		},
+		{
+			"id": "de5aa220-39c9-491d-af95-02b479f8c55c",
+			"name": "NationReadID",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/nation/readID?id=1",
+			"time": 52,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"JSON": true,
+				"Nation pattern": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nation pattern": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				52
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"JSON": true,
+					"Nation pattern": true
+				}
+			]
+		},
+		{
+			"id": "1e78087e-24f6-46e9-8fda-72c5c8f20a77",
+			"name": "Insert Nation",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/nation/create",
+			"time": 49,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				49
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "92e02e08-e927-47ca-9e36-aaadcb3b92ed",
+			"name": "Update Nation",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/nation/create",
+			"time": 99,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				99
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "18fef69b-fa68-49c9-ba96-668978a5e143",
+			"name": "Dont match regex",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/nation/create",
+			"time": 62,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				62
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "22a7f019-c096-4bc2-996b-ef53c97e05db",
+			"name": "Delete Nation",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/nation/update?id=4",
+			"time": 52,
+			"responseCode": {
+				"code": 405,
+				"name": "Method Not Allowed"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				52
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "f849e6b2-b998-48fa-aa56-a9ea40c87820",
+			"name": "TeamList",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/team/list",
+			"time": 101,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"JSON": true,
+				"Nation pattern": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nation pattern": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				101
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"JSON": true,
+					"Nation pattern": true
+				}
+			]
+		},
+		{
+			"id": "4461f255-abcb-407c-a59f-06aa79f47f5a",
+			"name": "Read unknown Team",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/team/readID?id=99999",
+			"time": 23,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				23
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "04a77295-40a4-4cf1-989d-909ff24f1b24",
+			"name": "TeamReadName",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/team/readName?name=Real%20Madrid",
+			"time": 44,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"JSON": true,
+				"Nation pattern": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nation pattern": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				44
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"JSON": true,
+					"Nation pattern": true
+				}
+			]
+		},
+		{
+			"id": "04356430-08c0-4e8e-af58-53fb74ac39d7",
+			"name": "TeamReadID",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/team/readID?id=1",
+			"time": 22,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"JSON": true,
+				"Nation pattern": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nation pattern": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				22
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"JSON": true,
+					"Nation pattern": true
+				}
+			]
+		},
+		{
+			"id": "4070d455-99c4-4b39-aaad-ba82bb98f32a",
+			"name": "Insert Team",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/team/create",
+			"time": 101,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				101
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "91ab2011-9792-458e-89da-4230a879cba2",
+			"name": "Dont match regex",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/team/create",
+			"time": 45,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				45
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "26d99069-5a20-4068-b9f1-38864b0a3c66",
+			"name": "Update Team",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/team/create",
+			"time": 26,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				26
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "3597afc4-c0ff-436c-ab03-e3b3e96ce0d4",
+			"name": "Delete Team",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/team/create",
+			"time": 50,
+			"responseCode": {
+				"code": 405,
+				"name": "Method Not Allowed"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				50
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "9fd232f3-5ca5-4ae7-b9db-59b9726e11d9",
+			"name": "PositionList",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/position/list",
+			"time": 73,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"JSON": true,
+				"Nation pattern": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nation pattern": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				73
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"JSON": true,
+					"Nation pattern": true
+				}
+			]
+		},
+		{
+			"id": "01286c88-54de-4d55-8384-b366b5a33f83",
+			"name": "Read unknown Position",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/position/readID?id=99999",
+			"time": 26,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				26
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "0db2f882-e288-45ab-8d31-5c76864c1954",
+			"name": "PositionReadName",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/position/readName?name=LF",
+			"time": 53,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"JSON": true,
+				"Nation pattern": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nation pattern": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				53
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"JSON": true,
+					"Nation pattern": true
+				}
+			]
+		},
+		{
+			"id": "21ce5398-7570-4115-ac2f-bcd45de14d82",
+			"name": "PositionReadID",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/position/list",
+			"time": 25,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"JSON": true,
+				"Nation pattern": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nation pattern": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				25
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"JSON": true,
+					"Nation pattern": true
+				}
+			]
+		},
+		{
+			"id": "a4a7d1d8-0e2f-4925-a675-57b3fb23e777",
+			"name": "Insert Position",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/position/create",
+			"time": 24,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				24
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "52711adf-a860-4596-b70f-02504e8f2839",
+			"name": "Update Position",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/position/create",
+			"time": 51,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				51
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "dc94e4bd-973e-4fdc-b983-1d108f066689",
+			"name": "Dont match regex",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/team/create",
+			"time": 40,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				40
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "dbebef1e-f57f-4718-be98-055810197c59",
+			"name": "Delete Position",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/position/delete?id=3",
+			"time": 34,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				34
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "dbe4da48-a9b2-4294-b561-edb60a04151b",
+			"name": "LigaList",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/liga/list",
+			"time": 23,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"JSON": true,
+				"Nation pattern": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nation pattern": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				23
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"JSON": true,
+					"Nation pattern": true
+				}
+			]
+		},
+		{
+			"id": "4b14560d-216b-4f85-8b31-48cf7fce9686",
+			"name": "Read unknown Liga",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/liga/readID?id=99999",
+			"time": 27,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				27
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "5c6b814a-c4e3-476e-8443-8189f755749f",
+			"name": "LigaReadName",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/liga/readName?name=LaLiga",
+			"time": 28,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"JSON": true,
+				"Nation pattern": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nation pattern": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				28
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"JSON": true,
+					"Nation pattern": true
+				}
+			]
+		},
+		{
+			"id": "31f7eee7-12b2-4da6-94b0-3944935a4401",
+			"name": "LigaReadID",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/liga/readID?id=1",
+			"time": 48,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"JSON": true,
+				"Nation pattern": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nation pattern": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				48
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"JSON": true,
+					"Nation pattern": true
+				}
+			]
+		},
+		{
+			"id": "4102edd8-c8ee-42a6-a0b3-15771a99f3dd",
+			"name": "Insert Liga",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/liga/create?name=Bundesliga",
+			"time": 26,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				26
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "46b98d1d-2da0-4078-b16b-4aa796df40de",
+			"name": "Update Liga",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/liga/update",
+			"time": 29,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				29
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "e41fdada-60bf-4c4d-a44e-e8541c4e5d9c",
+			"name": "Dont match regex",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/team/create",
+			"time": 49,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				49
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "518a4c76-19c4-43e3-b9dd-c6a2e5b05f12",
+			"name": "Delete Liga",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/liga/delete",
+			"time": 51,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				51
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 3921,
+	"collection": {
+		"requests": [
+			{
+				"id": "55479e16-86ad-4147-8c44-a920849a7c9a",
+				"method": "GET"
+			},
+			{
+				"id": "1a9f5af8-bae2-4bda-8f4d-16f8144deb13",
+				"method": "GET"
+			},
+			{
+				"id": "0947a072-0a7b-4605-8790-d6e277d35457",
+				"method": "GET"
+			},
+			{
+				"id": "9f6b4457-fa6a-43c4-9640-a6620e1e7197",
+				"method": "GET"
+			},
+			{
+				"id": "6aeff234-8546-4f7f-82d2-d50dc18694e2",
+				"method": "GET"
+			},
+			{
+				"id": "3dd75cfb-a347-4f63-8e6d-23930d98af18",
+				"method": "GET"
+			},
+			{
+				"id": "aad800db-6348-4246-8b48-189d02660d73",
+				"method": "GET"
+			},
+			{
+				"id": "57742f9b-96fe-4c1d-8e8e-89028989e443",
+				"method": "GET"
+			},
+			{
+				"id": "7f84a50a-7be8-4337-a929-3a0930c47373",
+				"method": "POST"
+			},
+			{
+				"id": "fb70c7a0-9a10-468a-9b9c-7e6f673792e8",
+				"method": "POST"
+			},
+			{
+				"id": "ca0140a6-f8b7-4c96-9f81-6973c0c724e0",
+				"method": "POST"
+			},
+			{
+				"id": "864bc356-aa57-480a-9ecf-4f06749dcbbb",
+				"method": "DELETE"
+			},
+			{
+				"id": "95602f0d-c85c-4658-8207-e70a732f2e0f",
+				"method": "GET"
+			},
+			{
+				"id": "89f4e1bf-397a-45ab-bfda-383b8e5f2141",
+				"method": "GET"
+			},
+			{
+				"id": "c64126f6-be37-4eb3-8d2e-f83a5950c312",
+				"method": "GET"
+			},
+			{
+				"id": "de5aa220-39c9-491d-af95-02b479f8c55c",
+				"method": "GET"
+			},
+			{
+				"id": "1e78087e-24f6-46e9-8fda-72c5c8f20a77",
+				"method": "POST"
+			},
+			{
+				"id": "92e02e08-e927-47ca-9e36-aaadcb3b92ed",
+				"method": "POST"
+			},
+			{
+				"id": "18fef69b-fa68-49c9-ba96-668978a5e143",
+				"method": "POST"
+			},
+			{
+				"id": "22a7f019-c096-4bc2-996b-ef53c97e05db",
+				"method": "DELETE"
+			},
+			{
+				"id": "f849e6b2-b998-48fa-aa56-a9ea40c87820",
+				"method": "GET"
+			},
+			{
+				"id": "4461f255-abcb-407c-a59f-06aa79f47f5a",
+				"method": "GET"
+			},
+			{
+				"id": "04a77295-40a4-4cf1-989d-909ff24f1b24",
+				"method": "GET"
+			},
+			{
+				"id": "04356430-08c0-4e8e-af58-53fb74ac39d7",
+				"method": "GET"
+			},
+			{
+				"id": "4070d455-99c4-4b39-aaad-ba82bb98f32a",
+				"method": "POST"
+			},
+			{
+				"id": "91ab2011-9792-458e-89da-4230a879cba2",
+				"method": "POST"
+			},
+			{
+				"id": "26d99069-5a20-4068-b9f1-38864b0a3c66",
+				"method": "POST"
+			},
+			{
+				"id": "3597afc4-c0ff-436c-ab03-e3b3e96ce0d4",
+				"method": "DELETE"
+			},
+			{
+				"id": "9fd232f3-5ca5-4ae7-b9db-59b9726e11d9",
+				"method": "GET"
+			},
+			{
+				"id": "01286c88-54de-4d55-8384-b366b5a33f83",
+				"method": "GET"
+			},
+			{
+				"id": "0db2f882-e288-45ab-8d31-5c76864c1954",
+				"method": "GET"
+			},
+			{
+				"id": "21ce5398-7570-4115-ac2f-bcd45de14d82",
+				"method": "GET"
+			},
+			{
+				"id": "a4a7d1d8-0e2f-4925-a675-57b3fb23e777",
+				"method": "POST"
+			},
+			{
+				"id": "52711adf-a860-4596-b70f-02504e8f2839",
+				"method": "POST"
+			},
+			{
+				"id": "dc94e4bd-973e-4fdc-b983-1d108f066689",
+				"method": "POST"
+			},
+			{
+				"id": "dbebef1e-f57f-4718-be98-055810197c59",
+				"method": "DELETE"
+			},
+			{
+				"id": "dbe4da48-a9b2-4294-b561-edb60a04151b",
+				"method": "GET"
+			},
+			{
+				"id": "4b14560d-216b-4f85-8b31-48cf7fce9686",
+				"method": "GET"
+			},
+			{
+				"id": "5c6b814a-c4e3-476e-8443-8189f755749f",
+				"method": "GET"
+			},
+			{
+				"id": "31f7eee7-12b2-4da6-94b0-3944935a4401",
+				"method": "GET"
+			},
+			{
+				"id": "4102edd8-c8ee-42a6-a0b3-15771a99f3dd",
+				"method": "POST"
+			},
+			{
+				"id": "46b98d1d-2da0-4078-b16b-4aa796df40de",
+				"method": "POST"
+			},
+			{
+				"id": "e41fdada-60bf-4c4d-a44e-e8541c4e5d9c",
+				"method": "POST"
+			},
+			{
+				"id": "518a4c76-19c4-43e3-b9dd-c6a2e5b05f12",
+				"method": "DELETE"
+			}
+		]
+	}
+}

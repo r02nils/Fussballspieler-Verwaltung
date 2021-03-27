@@ -9,6 +9,7 @@ import ch.bzz.fussballSpielerVerwaltung.model.Liga;
 
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -32,15 +33,35 @@ public class SpielerService {
     @Path("create")
     @Produces(MediaType.APPLICATION_JSON)
     public Response create(
-            @FormParam("name") String name,
+            @FormParam("name")
+            @NotEmpty
+            @Pattern(regexp="^[a-zA-Z ]+$")
+            @Size(min=2, max=40)
+                    String name,
 
-            @FormParam("nation") String nation,
+            @FormParam("nation")
+            @NotEmpty
+            @Pattern(regexp="^[a-zA-Z ]+$")
+            @Size(min=2, max=40)
+                    String nation,
 
-            @FormParam("team") String team,
+            @FormParam("team")
+            @NotEmpty
+            @Pattern(regexp="^[a-zA-Z ]+$")
+            @Size(min=2, max=40)
+                    String team,
 
-            @FormParam("liga") String liga,
+            @FormParam("liga")
+            @NotEmpty
+            @Pattern(regexp="^[a-zA-Z0-9 ]+$")
+            @Size(min=2, max=40)
+                    String liga,
 
-            @FormParam("position") String position
+            @FormParam("position")
+            @NotEmpty
+            @Pattern(regexp="^[a-zA-Z]+$")
+            @Size(min=2, max=40)
+                    String position
     ){
         DataHandler.getSpielerID();
         DataHandler.getNationID();

@@ -3,6 +3,10 @@ package ch.bzz.fussballSpielerVerwaltung.service;
 import ch.bzz.fussballSpielerVerwaltung.data.DataHandler;
 import ch.bzz.fussballSpielerVerwaltung.model.Nation;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -30,7 +34,11 @@ public class NationService {
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response create(
-            @FormParam("name")String name
+            @FormParam("name")
+            @NotEmpty
+            @Pattern(regexp="^[a-zA-Z ]+$")
+            @Size(min=2, max=40)
+                    String name
     ){
         DataHandler.getNationID();
 

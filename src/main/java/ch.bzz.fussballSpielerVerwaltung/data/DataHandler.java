@@ -328,6 +328,10 @@ public class DataHandler{
         }
     }
 
+    /**
+     * saves a team
+     * @param team
+     */
     public static void saveTeam(Team team) {
         int check = 0;
         for (int i = 0; i < teamVector.size(); i++) {
@@ -345,6 +349,10 @@ public class DataHandler{
         }
     }
 
+    /**
+     * saves a liga
+     * @param liga
+     */
     public static void saveLiga(Liga liga) {
         int check = 0;
         for (int i = 0; i < ligaVector.size(); i++) {
@@ -361,6 +369,11 @@ public class DataHandler{
             ligaVector = readLigaJSON();
         }
     }
+
+    /**
+     * saves a position
+     * @param position
+     */
     public static void savePosition(Position position) {
         int check = 0;
         for (int i = 0; i < posVector.size(); i++) {
@@ -378,12 +391,20 @@ public class DataHandler{
         }
     }
 
+    /**
+     * deletes a spieler
+     * @param x
+     */
     public static void deleteSpieler(int x){
         spielerVector.remove(x-1);
         writeJSON();
         spielerVector = readJSON();
     }
 
+    /**
+     * deletes a nation
+     * @param x
+     */
     public static void deleteNation(int x){
         for (int i = 0; i < natVector.size(); i++) {
             if(natVector.get(i).getNatID() == x){
@@ -395,6 +416,10 @@ public class DataHandler{
         natVector = readNationJSON();
     }
 
+    /**
+     * deletes a position
+     * @param x
+     */
     public static void deletePosition(int x){
         for (int i = 0; i < posVector.size(); i++) {
             if(posVector.get(i).getPosID() == x){
@@ -406,6 +431,10 @@ public class DataHandler{
         posVector = readPositionJSON();
     }
 
+    /**
+     * deletes a team
+     * @param x
+     */
     public static void deleteTeam(int x){
         for (int i = 0; i < teamVector.size(); i++) {
             if(teamVector.get(i).getTeamID() == x){
@@ -417,6 +446,10 @@ public class DataHandler{
         teamVector = readTeamJSON();
     }
 
+    /**
+     * deletes a liga
+     * @param x
+     */
     public static void deleteLiga(int x){
         for (int i = 0; i < ligaVector.size(); i++) {
             if(ligaVector.get(i).getLigaID() == x){
@@ -428,6 +461,10 @@ public class DataHandler{
         ligaVector = readLigaJSON();
     }
 
+    /**
+     * updates a nation
+     * @param nation
+     */
     public static void updateNation(Nation nation){
         for (int i = 0; i < natVector.size(); i++) {
             if(natVector.get(i).getNatID() == nation.getNatID()){
@@ -439,6 +476,10 @@ public class DataHandler{
         natVector = readNationJSON();
     }
 
+    /**
+     * updates a team
+     * @param team
+     */
     public static void updateTeam(Team team){
         for (int i = 0; i < teamVector.size(); i++) {
             if(teamVector.get(i).getTeamID() == team.getTeamID()){
@@ -450,6 +491,10 @@ public class DataHandler{
         teamVector = readTeamJSON();
     }
 
+    /**
+     * updates a liga
+     * @param liga
+     */
     public static void updateLiga(Liga liga){
         for (int i = 0; i < ligaVector.size(); i++) {
             if(ligaVector.get(i).getLigaID() == liga.getLigaID()){
@@ -461,6 +506,10 @@ public class DataHandler{
         ligaVector = readLigaJSON();
     }
 
+    /**
+     * updates a spieler
+     * @param spieler
+     */
     public static void updateSpieler(Spieler spieler){
         for (int i = 0; i < spielerVector.size(); i++) {
             if(spielerVector.get(i).getSpielerID() == spieler.getSpielerID()){
@@ -471,6 +520,11 @@ public class DataHandler{
         writeJSON();
         spielerVector = readJSON();
     }
+
+    /**
+     * updates a position
+     * @param position
+     */
     public static void updatePosition(Position position){
         for (int i = 0; i < posVector.size(); i++) {
             if(posVector.get(i).getPosID() == position.getPosID()){
@@ -482,6 +536,10 @@ public class DataHandler{
         posVector = readPositionJSON();
     }
 
+    /**
+     * get Liga from team id
+     * @param id
+     */
     public static Liga getLigaFromTeamID(int id){
         Team team = null;
         for (int i = 0; i < teamVector.size(); i++) {
@@ -548,6 +606,7 @@ public class DataHandler{
 
     /**
      * reads the spieler from JSON
+     * @return spielerVector
      */
     private static Vector<Spieler> readJSON(){
         Vector<Spieler> s = new Vector<>();
@@ -574,6 +633,10 @@ public class DataHandler{
         return s;
     }
 
+    /**
+     * reads nations from JSON
+     * @return nationVector
+     */
     private static Vector<Nation> readNationJSON(){
         Vector<Nation> s = new Vector<>();
         Nation nation= null;
@@ -600,6 +663,10 @@ public class DataHandler{
         return s;
     }
 
+    /**
+     * reads teams from JSON
+     * @return teamVector
+     */
     private static Vector<Team> readTeamJSON(){
         Vector<Team> t = new Vector<>();
         Team team = null;
@@ -626,6 +693,10 @@ public class DataHandler{
         return t;
     }
 
+    /**
+     * reads liga from JSON
+     * @return ligaVector
+     */
     private static Vector<Liga> readLigaJSON(){
         Vector<Liga> l = new Vector<>();
         Liga liga = null;
@@ -652,6 +723,10 @@ public class DataHandler{
         return l;
     }
 
+    /**
+     * reads positions from JSON
+     * @return positionVector
+     */
     private static Vector<Position> readPositionJSON(){
         Vector<Position> p = new Vector<>();
         Position pos = null;
@@ -695,6 +770,9 @@ public class DataHandler{
         }
     }
 
+    /**
+     * write nation into JSON file
+     */
     private static void writeNationJSON(){
         try{
             Gson gson = new Gson();
@@ -709,6 +787,9 @@ public class DataHandler{
         }
     }
 
+    /**
+     * write team into JSON file
+     */
     private static void writeTeamJSON(){
         try{
             Gson gson = new Gson();
@@ -723,6 +804,9 @@ public class DataHandler{
         }
     }
 
+    /**
+     * write liga into JSON file
+     */
     private static void writeLigaJSON(){
         try{
             Gson gson = new Gson();
@@ -737,6 +821,9 @@ public class DataHandler{
         }
     }
 
+    /**
+     * write position into JSON file
+     */
     private static void writePositionJSON(){
         try{
             Gson gson = new Gson();
@@ -817,9 +904,5 @@ public class DataHandler{
     }
 
     public static void main(String[] args) {
-        ligaVector = readLigaJSON();
-        for (int i = 0; i < ligaVector.size(); i++) {
-            System.out.println(ligaVector.get(i).getLiga());
-        }
     }
 }
