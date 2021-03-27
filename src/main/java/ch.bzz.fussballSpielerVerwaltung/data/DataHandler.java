@@ -68,6 +68,7 @@ public class DataHandler{
         natVector = new Vector<>();
 
         spielerVector = readJSON();
+        natVector = readNationJSON();
     }
 
     /**
@@ -295,6 +296,12 @@ public class DataHandler{
         writeJSON();
     }
 
+    public static void saveNation(Nation nation) {
+        getNatVector().add(nation);
+        writeNationJSON();
+        natVector = readNationJSON();
+    }
+
     /**
      * gets the spielervector
      * @return spielerVector
@@ -360,10 +367,33 @@ public class DataHandler{
                 spieler =
                         gson.fromJson(arrayList.get(i),
                                 Spieler.class);
-
-                getAllreadMethods(spieler);
-
                 s.add(spieler);
+            }
+        }
+        catch (Exception e){
+
+        }
+        getAllIDs();
+        return s;
+    }
+
+    private static Vector<Nation> readNationJSON(){
+        Vector<Nation> s = new Vector<>();
+        Nation nation= null;
+        Gson gson = new Gson();
+        try{
+            BufferedReader reader = Files.newBufferedReader(Paths.get(Config.getProperty("nationJSON")));
+            String line = reader.readLine();
+
+            String[] splits =  line.replace("[","").replace("]","")
+                    .replace("},{", "}},{{").split("\\},\\{");
+            ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(splits));
+            for (int i = 0; i < arrayList.size(); i++) {
+                nation =
+                        gson.fromJson(arrayList.get(i),
+                                Nation.class);
+
+                s.add(nation);
             }
         }
         catch (Exception e){
@@ -383,6 +413,20 @@ public class DataHandler{
             Writer writer = new FileWriter(Config.getProperty("spielerJSON"));
 
             gson.toJson(spielerVector, writer);
+            writer.close();
+        }
+        catch (Exception e){
+
+        }
+    }
+
+    private static void writeNationJSON(){
+        try{
+            Gson gson = new Gson();
+
+            Writer writer = new FileWriter(Config.getProperty("nationJSON"));
+
+            gson.toJson(natVector, writer);
             writer.close();
         }
         catch (Exception e){

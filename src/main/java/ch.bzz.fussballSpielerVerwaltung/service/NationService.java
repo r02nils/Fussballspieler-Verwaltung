@@ -3,12 +3,10 @@ package ch.bzz.fussballSpielerVerwaltung.service;
 import ch.bzz.fussballSpielerVerwaltung.data.DataHandler;
 import ch.bzz.fussballSpielerVerwaltung.model.Nation;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.util.Vector;
 
@@ -27,6 +25,26 @@ public class NationService {
      * Get JSON of all Nations
      * @return response
      */
+
+    @POST
+    @Path("create")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response create(
+            @FormParam("name")String name
+    ){
+        DataHandler.getAllIDs();
+        Nation nation = new Nation(DataHandler.getNationC()+1, name, "1.png");
+
+        DataHandler.saveNation(nation);
+
+        Response response = Response
+                .status(200)
+                .entity("")
+                .build();
+
+        return response;
+    }
+
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)

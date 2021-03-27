@@ -43,6 +43,8 @@ public class SpielerService {
             @FormParam("position") String position
 
     ){
+
+        DataHandler.getAllIDs();
         Nation n = new Nation(DataHandler.getNationC()+1,nation,"1.png");
         Liga l = new Liga(DataHandler.getLigaC()+1,liga, "4.png");
         Team t = new Team(DataHandler.getTeamC()+1,team, "5.png", l);
