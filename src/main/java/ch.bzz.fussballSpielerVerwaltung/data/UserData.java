@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.Vector;
 
 public class UserData {
@@ -23,7 +24,6 @@ public class UserData {
     private UserData(){
         userVector = new Vector<>();
 
-        User user = new User(1, "admin", "12345678", 1);
         userVector = readUserJSON();
     }
 
@@ -66,12 +66,31 @@ public class UserData {
         catch (Exception e){
 
         }
+        for (int i = 0; i < u.size(); i++) {
+            String name = u.get(i).getUsername();
+            String password = u.get(i).getPassword();
+            String role = u.get(i).getRole();
+
+            u.get(i).setUsername(decode(name));
+            u.get(i).setPassword(decode(password));
+            u.get(i).setRole(decode(role));
+        }
+
         getUserID();
         return u;
     }
 
     private static void writeJSON(){
         try{
+            for (int i = 0; i < userVector.size(); i++) {
+                String name = userVector.get(i).getUsername();
+                String password = userVector.get(i).getPassword();
+                String role = userVector.get(i).getRole();
+
+                userVector.get(i).setUsername(encode(name));
+                userVector.get(i).setPassword(encode(password));
+                userVector.get(i).setRole(encode(role));
+            }
             Gson gson = new Gson();
 
             Writer writer = new FileWriter(Config.getProperty("userJSON"));
@@ -94,7 +113,20 @@ public class UserData {
         userC = highest;
     }
 
+    public static String encode(String text){
+        String encodedString = Base64.getEncoder().encodeToString(text.getBytes());
+        return encodedString;
+    }
+
+    public static String decode(String text){
+        byte[] decodedBytes = Base64.getDecoder().decode(text);
+        String decodedString = new String(decodedBytes);
+        return decodedString;
+    }
+
     public static void main(String[] args) {
-        System.out.println("Test");
+        User user = new User(userC,"Nils", "1234", "admin");
+        userVector.add(user);
+        writeJSON();
     }
 }

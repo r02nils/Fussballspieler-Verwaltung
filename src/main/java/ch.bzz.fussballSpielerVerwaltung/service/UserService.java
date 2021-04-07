@@ -3,13 +3,16 @@ package ch.bzz.fussballSpielerVerwaltung.service;
 import ch.bzz.fussballSpielerVerwaltung.data.UserData;
 import ch.bzz.fussballSpielerVerwaltung.model.User;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import javax.ws.rs.core.*;
 import java.awt.*;
 
 @Path("user")
 public class UserService {
+    @Context
+    private HttpServletRequest request;
 
     @POST
     @Path("login")
@@ -19,6 +22,10 @@ public class UserService {
         @FormParam("password") String password
 
     ){
+        HttpSession session = request.getSession(true);
+        session.setAttribute("username", username);
+        session.setAttribute("password", password);
+
         int httpStatus = 200;
 
         User user = UserData.findUser(username, password);
@@ -30,9 +37,20 @@ public class UserService {
             httpStatus = 200;
         }
 
+        NewCookie cookie = new NewCookie(
+                "userRole",
+                user.getRole(),
+                "/",
+                "",
+                "Login-Cookie",
+                600,
+                false
+        );
+
         Response response = Response
                 .status(httpStatus)
                 .entity("")
+                .cookie(cookie)
                 .build();
         return response;
     }
@@ -42,6 +60,20 @@ public class UserService {
     @Produces(MediaType.TEXT_PLAIN)
     public Response logout(
     ){
+
+        NewCookie cookie = new NewCookie(
+                "userRole",
+                "guest",
+                "/",
+                "",
+                "Login-Cookie",
+                1,
+                false
+        );
+
+        HttpSession session = request.getSession(true);
+        session.invalidate();
+
         int httpStatus = 200;
 
         UserData.logout();
@@ -49,6 +81,7 @@ public class UserService {
         Response response = Response
                 .status(httpStatus)
                 .entity("")
+                .cookie(cookie)
                 .build();
         return response;
     }
