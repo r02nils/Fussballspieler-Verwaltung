@@ -1,27 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="author" content="Marcel Suter"/>
+    <meta name="copyright" content="FG ICT - Bildungszentrum Zürichsee"/>
+    <meta name="project" content="Bookshelf"/>
+    <meta name="description" content="bookshelf books list table"/>
+    <title>Bücherliste</title>
     <link rel="stylesheet" href="css/table.css">
 </head>
 <body>
-<table class="blueTable">
-    <thead>
-    <tr>
-        <td>id</td>
-        <td>name</td>
-        <td>nation</td>
-        <td>position</td>
-        <td>team</td>
-        <td>liga</td>
-    </tr>
-    </thead>
-    <tbody id="tableBody">
+<h3>Bücherliste</h3>
+<div id="nav">
 
-    </tbody>
-</table>
 
-    <script src="js/getSpieler.js"></script>
+    <button type="button" id="logoff">Abmelden</button>
+    <span id="userRole"></span>
+    <span id="message" style="color: red;"></span>
+</div>
+<form id="shelfForm">
+    <table id="blueTable">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Nation</th>
+            <th>Position</th>
+            <th>Team</th>
+            <th>Liga</th>
+            <th>Bearbeiten</th>
+            <th>Anzeigen</th>
+        </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+
+    <p id="test"></p>
+
+    <p>
+        <a href="./bookedit.html">Neues Buch</a>
+    </p>
+</form>
+<script src="./js/jquery.js"></script>
+<script src="./js/getSpieler.js"></script>
+<script src="./js/checkCookie.js"></script>
 </body>
 </html>
