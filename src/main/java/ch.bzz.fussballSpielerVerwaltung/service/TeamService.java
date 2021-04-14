@@ -39,26 +39,34 @@ public class TeamService {
             @NotEmpty
             @Pattern(regexp="^[a-zA-Z0-9 ]+$")
             @Size(min=2, max=40)
-                    String ligaName
+                    String ligaName,
+            @CookieParam("userRole") String userRole
     ){
-        DataHandler.getTeamID();
-        DataHandler.getLigaID();
+        int httpStatus = 200;
+        if(userRole == null || userRole.equals("guest") || userRole.equals("read")){
+            httpStatus = 403;
+        }
+        else if(userRole.equals("admin")){
+            httpStatus = 200;
+            DataHandler.getTeamID();
+            DataHandler.getLigaID();
 
-        Liga liga = new Liga(DataHandler.getLigaC()+1, ligaName, "1.png");
+            Liga liga = new Liga(DataHandler.getLigaC()+1, ligaName, "1.png");
 
-        for (int i = 0; i < DataHandler.getLigaVector().size(); i++) {
-            if(DataHandler.getLigaVector().get(i).getLiga().equals(liga.getLiga())){
-                liga = DataHandler.getLigaVector().get(i);
+            for (int i = 0; i < DataHandler.getLigaVector().size(); i++) {
+                if(DataHandler.getLigaVector().get(i).getLiga().equals(liga.getLiga())){
+                    liga = DataHandler.getLigaVector().get(i);
+                }
             }
+
+            Team team = new Team(DataHandler.getTeamC()+1, name, "1.png", liga);
+
+            DataHandler.saveLiga(liga);
+            DataHandler.saveTeam(team);
         }
 
-        Team team = new Team(DataHandler.getTeamC()+1, name, "1.png", liga);
-
-        DataHandler.saveLiga(liga);
-        DataHandler.saveTeam(team);
-
         Response response = Response
-                .status(200)
+                .status(httpStatus)
                 .entity("")
                 .build();
 
@@ -68,13 +76,20 @@ public class TeamService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response delete(
-            @QueryParam("id") int id
+            @QueryParam("id") int id,
+            @CookieParam("userRole") String userRole
     ){
-
-        DataHandler.deleteTeam(id);
+        int httpStatus = 200;
+        if(userRole == null || userRole.equals("guest") || userRole.equals("read")){
+            httpStatus = 403;
+        }
+        else if(userRole.equals("admin")){
+            httpStatus = 200;
+            DataHandler.deleteTeam(id);
+        }
 
         Response response = Response
-                .status(200)
+                .status(httpStatus)
                 .entity("")
                 .build();
 
@@ -87,26 +102,34 @@ public class TeamService {
     public Response update(
             @FormParam("id")int id,
             @FormParam("name")String name,
-            @FormParam("liga")String ligaName
+            @FormParam("liga")String ligaName,
+            @CookieParam("userRole") String userRole
     ){
 
-        DataHandler.getTeamID();
-        DataHandler.getLigaID();
+        int httpStatus = 200;
+        if(userRole == null || userRole.equals("guest") || userRole.equals("read")){
+            httpStatus = 403;
+        }
+        else if(userRole.equals("admin")){
+            httpStatus = 200;
+            DataHandler.getTeamID();
+            DataHandler.getLigaID();
 
-        Liga liga = new Liga(DataHandler.getLigaC()+1, ligaName, "1.png");
+            Liga liga = new Liga(DataHandler.getLigaC()+1, ligaName, "1.png");
 
-        for (int i = 0; i < DataHandler.getLigaVector().size(); i++) {
-            if(DataHandler.getLigaVector().get(i).getLiga().equals(liga.getLiga())){
-                liga = DataHandler.getLigaVector().get(i);
+            for (int i = 0; i < DataHandler.getLigaVector().size(); i++) {
+                if(DataHandler.getLigaVector().get(i).getLiga().equals(liga.getLiga())){
+                    liga = DataHandler.getLigaVector().get(i);
+                }
             }
+
+            Team team = new Team(DataHandler.getTeamC()+1, name, "1.png", liga);
+
+            DataHandler.updateTeam(team);
         }
 
-        Team team = new Team(DataHandler.getTeamC()+1, name, "1.png", liga);
-
-        DataHandler.updateTeam(team);
-
         Response response = Response
-                .status(200)
+                .status(httpStatus)
                 .entity("")
                 .build();
 
@@ -120,11 +143,21 @@ public class TeamService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response team(){
-        Vector<Team> team = DataHandler.getTeamVector();
+    public Response team(
+            @CookieParam("userRole") String userRole
+    ){
+        Vector<Team> team = null;
+        int httpStatus = 200;
+        if(userRole == null || userRole.equals("guest")){
+            httpStatus = 403;
+        }
+        else if(userRole.equals("admin") || userRole.equals("read")){
+            httpStatus = 200;
+            team = DataHandler.getTeamVector();
+        }
 
         Response response = Response
-                .status(200)
+                .status(httpStatus)
                 .entity(team)
                 .build();
 
@@ -139,13 +172,22 @@ public class TeamService {
     @Path("readName")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readTeamByName(
-            @QueryParam("name") String name
+            @QueryParam("name") String name,
+            @CookieParam("userRole") String userRole
     ) throws IOException {
         Vector<Team> team = null;
-        team = DataHandler.readTeamByName(name);
+
+        int httpStatus = 200;
+        if(userRole == null || userRole.equals("guest")){
+            httpStatus = 403;
+        }
+        else if(userRole.equals("admin") || userRole.equals("read")){
+            httpStatus = 200;
+            team = DataHandler.readTeamByName(name);
+        }
 
         Response response = Response
-                .status(200)
+                .status(httpStatus)
                 .entity(team)
                 .build();
 
@@ -160,21 +202,27 @@ public class TeamService {
     @Path("readID")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readTeamByID(
-            @QueryParam("id") int id
+            @QueryParam("id") int id,
+            @CookieParam("userRole") String userRole
     ) throws IOException {
         Team team = null;
 
-        int httpStatus;
-
-        try {
-            team = DataHandler.readTeamByID(id);
-            if (team.getTeam() != null) {
-                httpStatus = 200;
-            } else {
-                httpStatus = 404;
+        int httpStatus = 200;
+        if(userRole == null || userRole.equals("guest")){
+            httpStatus = 403;
+        }
+        else if(userRole.equals("admin") || userRole.equals("read")){
+            httpStatus = 200;
+            try {
+                team = DataHandler.readTeamByID(id);
+                if (team.getTeam() != null) {
+                    httpStatus = 200;
+                } else {
+                    httpStatus = 404;
+                }
+            } catch (IllegalArgumentException argEx) {
+                httpStatus = 400;
             }
-        } catch (IllegalArgumentException argEx) {
-            httpStatus = 400;
         }
 
         Response response = Response

@@ -22,10 +22,6 @@ public class UserService {
         @FormParam("password") String password
 
     ){
-        HttpSession session = request.getSession(true);
-        session.setAttribute("username", username);
-        session.setAttribute("password", password);
-
         int httpStatus = 200;
 
         User user = UserData.findUser(username, password);

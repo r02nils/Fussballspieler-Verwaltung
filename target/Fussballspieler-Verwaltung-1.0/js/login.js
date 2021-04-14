@@ -13,7 +13,7 @@ function sendLogin(form){
             data: $("#loginForm").serialize()
         })
         .done(function () {
-            alert("Erfolgreich eingeloggt!")
+            alert("Erfolgreich eingeloggt!");
             window.location.href = "./index.html";
         })
         .fail(function (xhr, status, errorThrown){
@@ -34,7 +34,7 @@ function sendLogout(){
             })
             .done(function () {
                 alert("Erfolgreich ausgeloggt!");
-                window.location.href = "./login.html";
+                window.location.href = "./index.html";
             })
             .fail(function (xhr, status, errorThrown){
 

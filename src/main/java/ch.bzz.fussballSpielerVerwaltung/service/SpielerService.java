@@ -69,7 +69,7 @@ public class SpielerService {
         if(userRole == null || userRole.equals("guest") || userRole.equals("read")){
             httpStatus = 403;
         }
-        else{
+        else if(userRole.equals("admin")){
             httpStatus = 200;
 
             DataHandler.getSpielerID();
@@ -134,7 +134,7 @@ public class SpielerService {
         if(userRole == null || userRole.equals("guest") || userRole.equals("read")){
             httpStatus = 403;
         }
-        else{
+        else if(userRole.equals("admin")){
             httpStatus = 200;
             DataHandler.deleteSpieler(id);
         }
@@ -164,7 +164,7 @@ public class SpielerService {
         if(userRole == null || userRole.equals("guest") || userRole.equals("read")){
             httpStatus = 403;
         }
-        else {
+        else if(userRole.equals("admin")){
             httpStatus = 200;
             DataHandler.getSpielerID();
             DataHandler.getNationID();
@@ -228,7 +228,7 @@ public class SpielerService {
         if(userRole == null || userRole.equals("guest")){
             httpStatus = 403;
         }
-        else{
+        else if(userRole.equals("admin") || userRole.equals("read")){
             httpStatus = 200;
             spieler = DataHandler.getSpielerVector();
         }
@@ -257,7 +257,7 @@ public class SpielerService {
         if(userRole == null || userRole.equals("guest")){
             httpStatus = 403;
         }
-        else{
+        else if(userRole.equals("admin") || userRole.equals("read")){
             httpStatus = 200;
             spieler = DataHandler.getSpielerVectorSorted();
         }
@@ -287,7 +287,7 @@ public class SpielerService {
         if(userRole == null || userRole.equals("guest")){
             httpStatus = 403;
         }
-        else{
+        else if(userRole.equals("admin") || userRole.equals("read")){
             httpStatus = 200;
             spieler = DataHandler.readSpielerByName(name);
         }
@@ -317,7 +317,7 @@ public class SpielerService {
         if(userRole == null || userRole.equals("guest")){
             httpStatus = 403;
         }
-        else{
+        else if(userRole.equals("admin") || userRole.equals("read")){
             httpStatus = 200;
             try {
                 spieler = DataHandler.readSpielerByID(id);
@@ -356,7 +356,7 @@ public class SpielerService {
         if(userRole == null || userRole.equals("guest")){
             httpStatus = 403;
         }
-        else{
+        else if(userRole.equals("admin") || userRole.equals("read")){
             httpStatus = 200;
             spieler = DataHandler.readSpielerByNationName(name);
         }
@@ -386,7 +386,7 @@ public class SpielerService {
         if(userRole == null || userRole.equals("guest")){
             httpStatus = 403;
         }
-        else{
+        else if(userRole.equals("admin") || userRole.equals("read")){
             httpStatus = 200;
             spieler = DataHandler.readSpielerByTeamName(name);
         }
@@ -416,7 +416,7 @@ public class SpielerService {
         if(userRole == null || userRole.equals("guest")){
             httpStatus = 403;
         }
-        else{
+        else if(userRole.equals("admin") || userRole.equals("read")){
             httpStatus = 200;
             spieler = DataHandler.readSpielerByPositionName(name);
         }
