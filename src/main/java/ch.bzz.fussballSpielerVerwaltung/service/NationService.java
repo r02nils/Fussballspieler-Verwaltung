@@ -71,7 +71,7 @@ public class NationService {
         return response;
     }
 
-    @POST
+    @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response update(

@@ -1,17 +1,13 @@
 /**
- * view-controller for bookshelf.html
  *
- * M133: Bookshelf
- *
- * @author  Marcel Suter
+ * @author  Nils Rothenbühler
  */
 
 /**
- * register listeners and load all books
+ * register listeners and load all spieler
  */
 $(document).ready(function () {
-    alert("1");
-    loadBooks();
+    loadSpielers();
 
     /**
      * listener for buttons within shelfForm
@@ -26,8 +22,7 @@ $(document).ready(function () {
 
 });
 
-function loadBooks() {
-    alert("2");
+function loadSpielers() {
     $
         .ajax({
             url: "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/list",
@@ -59,7 +54,6 @@ function showBooks(bookData) {
 
     $.each(bookData, function (id, spieler) {
         if (spieler.name) {
-            alert("t")
             let row = table.insertRow(-1);
 
             let cell = row.insertCell(-1);
@@ -78,10 +72,10 @@ function showBooks(bookData) {
             cell.innerHTML = spieler.team.liga.liga;
 
             cell = row.insertCell(-1);
-            cell.innerHTML = "<a href='./bookedit.html?uuid=" + 1 + "'>Bearbeiten</a>";
+            cell.innerHTML = "<a href='./spielerEdit.html?id=" + spieler.spielerID + "'>Bearbeiten</a>";
 
             cell = row.insertCell(-1);
-            cell.innerHTML = "<button type='button' id='delete_" + 1 + "' value='" + 1 + "'>Löschen</button>";
+            cell.innerHTML = "<button type='button' id='delete_" + spieler.spielerID + "' value='" + spieler.spielerID + "'>Löschen</button>";
 
 
         }
@@ -99,19 +93,19 @@ function clearTable(table) {
  * send delete request for a book
  * @param bookUUID
  */
-function deleteBook(bookUUID) {
+function deleteBook(id) {
     $
         .ajax({
-            url: "./resource/book/delete?uuid=" + bookUUID,
+            url: "./resource/spieler/delete?id=" + id,
             dataType: "text",
             type: "DELETE",
         })
         .done(function (data) {
-            loadBooks();
-            $("#message").text("Buch gelöscht");
+            loadSpielers();
+            $("#message").text("Spieler gelöscht");
 
         })
         .fail(function (xhr, status, errorThrown) {
-            $("#message").text("Fehler beim Löschen des Buchs");
+            $("#message").text("Fehler beim Löschen des Spielers");
         })
 }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Spieler bearbeiten</title>
+</head>
+<body>
+<form id="spielerEdit" name="spielerEdit">
+    <h3>Spieler Bearbeiten</h3>
+    <div id="message" style="color: red;"></div>
+    <button type="button" id="logoff">Abmelden</button>
+    <table>
+        <tr>
+            <td><label for="id">id</label></td>
+            <td>
+                <input id="id" name="id" type="number" minlength="1" maxlength="3" required/>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="name">Name</label></td>
+            <td>
+                <input id="name" name="name" type="text" size="30" minlength="2" maxlength="30" required/>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="nation">Nation</label></td>
+            <td><input id="nation" name="nation" type="text" size="30" minlength="5" maxlength="50" required/></td>
+        </tr>
+        <tr>
+            <td><label for="position">Position</label></td>
+            <td><input id="position" name="position" type="text" minlength="2" maxlength="3" required/></td>
+        </tr>
+        <tr>
+            <td><label for="team">Team</label></td>
+            <td><input id="team" name="team" type="text"/></td>
+        </tr>
+        <tr>
+            <td><label for="liga">Liga</label></td>
+            <td><input id="liga" name="liga" type="text"/></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>
+                <button id="save" type="submit">Speichern</button>
+            </td>
+            <td>
+                <button id="reset" type="reset">Zurücksetzen</button>
+            </td>
+            <td>
+                <button id="cancel" type="button">Abbruch</button>
+            </td>
+        </tr>
+    </table>
+</form>
+<script src="./js/jquery.js"></script>
+<script src="./js/spielerEdit.js"></script>
+<script src="./js/util.js"></script>
+<script src="./js/js.cookie.js"></script>
+</body>
+</html>

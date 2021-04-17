@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Marcel Suter"/>
+    <meta name="copyright" content="FG ICT - Bildungszentrum Zürichsee"/>
+    <meta name="project" content="Bookshelf"/>
+    <meta name="description" content="bookshelf books list table"/>
+    <title>Spieler Liste</title>
+    <link rel="stylesheet" href="css/table.css">
+</head>
+<body>
+<h3>Bücherliste</h3>
+<div id="nav">
+
+
+    <button type="button" id="logoff">Abmelden</button>
+    <span id="userRole"></span>
+    <span id="message" style="color: red;"></span>
+</div>
+<form id="shelfForm">
+    <table id="blueTable">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Nation</th>
+            <th>Position</th>
+            <th>Team</th>
+            <th>Liga</th>
+            <th>Bearbeiten</th>
+            <th>Anzeigen</th>
+        </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+
+    <p id="test"></p>
+
+    <p>
+        <a href="./spielerEdit.html">Spieler erstellen</a>
+    </p>
+</form>
+<script src="./js/jquery.js"></script>
+<script src="./js/getSpieler.js"></script>
+<script src="./js/checkCookie.js"></script>
+</body>
+</html>

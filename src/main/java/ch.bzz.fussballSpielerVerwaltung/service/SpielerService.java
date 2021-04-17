@@ -147,7 +147,7 @@ public class SpielerService {
         return response;
     }
 
-    @POST
+    @PUT
     @Path("update")
     @Produces(MediaType.APPLICATION_JSON)
     public Response update(

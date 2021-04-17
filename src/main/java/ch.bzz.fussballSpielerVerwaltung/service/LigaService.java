@@ -66,7 +66,7 @@ public class LigaService {
         return response;
     }
 
-    @POST
+    @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response update(
