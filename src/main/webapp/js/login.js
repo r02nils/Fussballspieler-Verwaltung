@@ -14,7 +14,7 @@ function sendLogin(form){
         })
         .done(function () {
             alert("Erfolgreich eingeloggt!");
-            window.location.href = "./index.html";
+            window.location.href = "./spielerList.html";
         })
         .fail(function (xhr, status, errorThrown){
             if(xhr.status == 404){
@@ -34,7 +34,7 @@ function sendLogout(){
             })
             .done(function () {
                 alert("Erfolgreich ausgeloggt!");
-                window.location.href = "./index.html";
+                window.location.href = "./spielerList.html";
             })
             .fail(function (xhr, status, errorThrown){
 

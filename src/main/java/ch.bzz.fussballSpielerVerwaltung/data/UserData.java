@@ -125,7 +125,7 @@ public class UserData {
     }
 
     public static void main(String[] args) {
-        User user = new User(userC,"Nils", "1234", "admin");
+        User user = new User(userC,"test", "test", "read");
         userVector.add(user);
         writeJSON();
     }

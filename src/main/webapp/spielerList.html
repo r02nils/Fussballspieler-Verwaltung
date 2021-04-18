@@ -2,21 +2,18 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="author" content="Marcel Suter"/>
-    <meta name="copyright" content="FG ICT - Bildungszentrum Zürichsee"/>
-    <meta name="project" content="Bookshelf"/>
-    <meta name="description" content="bookshelf books list table"/>
-    <title>Bücherliste</title>
+    <title>Spielerliste</title>
     <link rel="stylesheet" href="css/table.css">
 </head>
 <body>
-<h3>Bücherliste</h3>
+<h3>Spielerliste</h3>
 <div id="nav">
 
 
-    <button type="button" id="logoff">Abmelden</button>
+    <a href="login.html"><button id="logon">Anmelden</button></a>
+    <button id="logoff">Abmelden</button>
     <span id="userRole"></span>
-    <span id="message" style="color: red;"></span>
+    <span id="message" style="color: #ff0000;"></span>
 </div>
 <form id="shelfForm">
     <table id="blueTable">
@@ -24,11 +21,11 @@
         <tr>
             <th>Name</th>
             <th>Nation</th>
-            <th>Position</th>
+            <th><a href="positionList.html">Position</a></th>
             <th>Team</th>
             <th>Liga</th>
             <th>Bearbeiten</th>
-            <th>Anzeigen</th>
+            <th>Löschen</th>
         </tr>
         </thead>
         <tbody id="tableBody">
@@ -38,11 +35,12 @@
     <p id="test"></p>
 
     <p>
-        <a href="./bookedit.html">Neues Buch</a>
+        <a href="./spielerEdit.html">Neuer Spieler</a>
     </p>
 </form>
 <script src="./js/jquery.js"></script>
 <script src="./js/getSpieler.js"></script>
 <script src="./js/checkCookie.js"></script>
+<script src="./js/login.js"></script>
 </body>
 </html>

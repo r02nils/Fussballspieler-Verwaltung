@@ -4,52 +4,52 @@
  */
 
 /**
- * register listeners and load the spieler data
+ * register listeners and load the pos data
  */
 $(document).ready(function (){
-    loadSpieler();
+    loadPosition();
 
     /**
      * listener for submitting the form
      */
-    $("#spielerEdit").submit(saveSpieler);
+    $("#posEdit").submit(savePosition);
 
     /**
      * listener for button [abbrechen]
      */
     $("#cancel").click(function () {
-        window.location.href = "./spielerList.html";
+        window.location.href = "./positionList.html";
     });
 
     $("#id").change(function () {
-        loadSpieler();
+        loadPosition();
     });
 
 
 });
 
 /**
- *  loads the data of this spieler
+ *  loads the data of this pos
  *
  */
-function loadSpieler() {
+function loadPosition() {
     const queryString = window.location.search;
     var id = queryString;
     if (id !== null) {
         $
             .ajax({
-                url: "./resource/spieler/readID" + id,
+                url: "./resource/position/readID" + id,
                 dataType: "json",
                 type: "GET"
             })
-            .done(showSpieler)
+            .done(showPosition)
             .fail(function (xhr, status, errorThrown) {
                 if (xhr.status == 403) {
                     window.location.href = "./login.html";
                 } else if (xhr.status == 404) {
-                    $("#message").text("Kein Spieler gefunden!");
+                    $("#message").text("Keine Position gefunden!");
                 } else {
-                    window.location.href = "./spielerList.html";
+                    window.location.href = "./positionList.html";
                 }
             })
     }
@@ -57,27 +57,22 @@ function loadSpieler() {
 }
 
 /**
- * shows the data of this spieler
- * @param  book  the spieler data to be shown
+ * shows the data of this pos
+ * @param  book  the pos data to be shown
  */
-function showSpieler(spieler) {
-    $("#id").val(spieler.spielerID);
-    $("#name").val(spieler.name);
-    $("#nation").val(spieler.nat.nat);
-    $("#position").val(spieler.pos.pos);
-    $("#team").val(spieler.team.team);
-    $("#liga").val(spieler.team.liga.liga);
-
+function showPosition(pos) {
+    $("#id").val(pos.posID);
+    $("#name").val(pos.pos);
 }
 
 /**
  * sends the book data to the webservice
  * @param form the form being submitted
  */
-function saveSpieler(form) {
+function savePosition(form) {
     form.preventDefault();
 
-    let url = "./resource/spieler/";
+    let url = "./resource/position/";
     let type;
 
     let id = $("#id").val();
@@ -94,16 +89,16 @@ function saveSpieler(form) {
             url: url,
             dataType: "text",
             type: type,
-            data: $("#spielerEdit").serialize()
+            data: $("#posEdit").serialize()
         })
         .done(function (jsonData) {
-            window.location.href = "./spielerList.html";
+            window.location.href = "./positionList.html";
         })
         .fail(function (xhr, status, errorThrown) {
             if (xhr.status == 404) {
-                $("#message").text("Dieser Spieler existiert nicht");
+                $("#message").text("Diese Position existiert nicht");
             } else {
-                $("#message").text("Fehler beim Speichern des Spielers");
+                $("#message").text("Fehler beim Speichern der Position");
             }
         })
 }

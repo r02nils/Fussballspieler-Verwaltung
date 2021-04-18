@@ -396,7 +396,12 @@ public class DataHandler{
      * @param x
      */
     public static void deleteSpieler(int x){
-        spielerVector.remove(x-1);
+        for (int i = 0; i < spielerVector.size(); i++) {
+            Spieler spieler = spielerVector.get(i);
+            if(spieler.getSpielerID() == x){
+                spielerVector.remove(i);
+            }
+        }
         writeJSON();
         spielerVector = readJSON();
     }

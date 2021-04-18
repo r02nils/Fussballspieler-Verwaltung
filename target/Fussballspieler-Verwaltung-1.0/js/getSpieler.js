@@ -13,8 +13,8 @@ $(document).ready(function () {
      * listener for buttons within shelfForm
      */
     $("#shelfForm").on("click", "button", function () {
-        if (confirm("Wollen Sie dieses Buch wirklich löschen?")) {
-            deleteBook(this.value);
+        if (confirm("Wollen diesen Spieler wirklich löschen")) {
+            deleteSpieler(this.value);
         }
     });
 
@@ -29,14 +29,14 @@ function loadSpielers() {
             dataType: "json",
             type: "GET"
         })
-        .done(showBooks)
+        .done(showSpieler)
         .fail(function (xhr, status, errorThrown) {
             if (xhr.status == 403) {
                 window.location.href = "./login.html";
             } else if (xhr.status == 404) {
-                $("#message").text("keine Bücher vorhanden");
+                $("#message").text("keine Spieler vorhanden");
             }else {
-                $("#message").text("Fehler beim Lesen der Bücher");
+                $("#message").text("Fehler beim Lesen der Spieler");
             }
         })
 
@@ -45,38 +45,87 @@ function loadSpielers() {
 /**
  * shows all books as a table
  *
- * @param bookData all books as an array
+ * @param showSpieler all books as an array
  */
-function showBooks(bookData) {
+function showSpieler(SpielerData) {
 
     let table = document.getElementById("tableBody");
     clearTable(table);
+    const cookie = document.cookie;
 
-    $.each(bookData, function (id, spieler) {
+    $.each(SpielerData, function (id, spieler) {
         if (spieler.name) {
             let row = table.insertRow(-1);
 
-            let cell = row.insertCell(-1);
-            cell.innerHTML = spieler.name;
 
-            cell = row.insertCell(-1);
-            cell.innerHTML = spieler.nat.nat;
+            if(cookie == "userRole=admin"){
 
-            cell = row.insertCell(-1);
-            cell.innerHTML = spieler.pos.pos;
+                let cell = row.insertCell(-1);
+                cell.innerHTML = "<a href='./spielerView.html?id=" + spieler.spielerID + "'>"+spieler.name+"</a>";
 
-            cell = row.insertCell(-1);
-            cell.innerHTML = spieler.team.team;
+                cell = row.insertCell(-1);
+                cell.innerHTML = spieler.nat.nat;
 
-            cell = row.insertCell(-1);
-            cell.innerHTML = spieler.team.liga.liga;
+                cell = row.insertCell(-1);
+                cell.innerHTML = spieler.pos.pos;
 
-            cell = row.insertCell(-1);
-            cell.innerHTML = "<a href='./spielerEdit.html?id=" + spieler.spielerID + "'>Bearbeiten</a>";
+                cell = row.insertCell(-1);
+                cell.innerHTML = spieler.team.team;
 
-            cell = row.insertCell(-1);
-            cell.innerHTML = "<button type='button' id='delete_" + spieler.spielerID + "' value='" + spieler.spielerID + "'>Löschen</button>";
+                cell = row.insertCell(-1);
+                cell.innerHTML = spieler.team.liga.liga;
 
+                cell = row.insertCell(-1);
+                cell.innerHTML = "<a href='./spielerEdit.html?id=" + spieler.spielerID + "'>Bearbeiten</a>";
+
+                cell = row.insertCell(-1);
+                cell.innerHTML = "<button type='button' id='delete_" + spieler.spielerID + "' value='" + spieler.spielerID + "'>Löschen</button>";
+            }
+            else if(cookie == "userRole=read"){
+
+                let cell = row.insertCell(-1);
+                cell.innerHTML = "<a href='./spielerView.html?id=" + spieler.spielerID + "'>"+spieler.name+"</a>";
+
+                cell = row.insertCell(-1);
+                cell.innerHTML = spieler.nat.nat;
+
+                cell = row.insertCell(-1);
+                cell.innerHTML = spieler.pos.pos;
+
+                cell = row.insertCell(-1);
+                cell.innerHTML = spieler.team.team;
+
+                cell = row.insertCell(-1);
+                cell.innerHTML = spieler.team.liga.liga;
+
+                cell = row.insertCell(-1);
+                cell.innerHTML = "Bearbeiten";
+
+                cell = row.insertCell(-1);
+                cell.innerHTML = "<button disabled type='button' id='delete_" + spieler.spielerID + "' value='" + spieler.spielerID + "'>Löschen</button>";
+            }
+            else{
+                let cell = row.insertCell(-1);
+                cell.innerHTML = spieler.name;
+
+                cell = row.insertCell(-1);
+                cell.innerHTML = spieler.nat.nat;
+
+                cell = row.insertCell(-1);
+                cell.innerHTML = spieler.pos.pos;
+
+                cell = row.insertCell(-1);
+                cell.innerHTML = spieler.team.team;
+
+                cell = row.insertCell(-1);
+                cell.innerHTML = spieler.team.liga.liga;
+
+                cell = row.insertCell(-1);
+                cell.innerHTML = "Bearbeiten";
+
+                cell = row.insertCell(-1);
+                cell.innerHTML = "<button disabled type='button' id='delete_" + spieler.spielerID + "' value='" + spieler.spielerID + "'>Löschen</button>";
+            }
 
         }
     });
@@ -93,7 +142,7 @@ function clearTable(table) {
  * send delete request for a book
  * @param bookUUID
  */
-function deleteBook(id) {
+function deleteSpieler(id) {
     $
         .ajax({
             url: "./resource/spieler/delete?id=" + id,

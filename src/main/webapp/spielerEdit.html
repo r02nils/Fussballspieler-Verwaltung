@@ -6,14 +6,15 @@
 </head>
 <body>
 <form id="spielerEdit" name="spielerEdit">
-    <h3>Spieler Bearbeiten</h3>
+    <h3>Spieler Bearbeiten / Erstellen</h3>
     <div id="message" style="color: red;"></div>
+    <p>Zum Erstellen muss id = 0 sein</p>
     <button type="button" id="logoff">Abmelden</button>
     <table>
         <tr>
             <td><label for="id">id</label></td>
             <td>
-                <input id="id" name="id" type="number" minlength="1" maxlength="3" required/>
+                <input id="id" name="id" type="number" minlength="1" maxlength="3" required value="0"/>
             </td>
         </tr>
         <tr>
@@ -56,6 +57,6 @@
 <script src="./js/jquery.js"></script>
 <script src="./js/spielerEdit.js"></script>
 <script src="./js/util.js"></script>
-<script src="./js/js.cookie.js"></script>
+<script src="./js/checkCookie.js"></script>
 </body>
 </html>

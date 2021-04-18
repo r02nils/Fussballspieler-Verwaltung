@@ -47,7 +47,7 @@ function loadSpieler() {
                 if (xhr.status == 403) {
                     window.location.href = "./login.html";
                 } else if (xhr.status == 404) {
-                    $("#message").text("Kein Buch gefunden");
+                    $("#message").text("Kein Spieler gefunden!");
                 } else {
                     window.location.href = "./spielerList.html";
                 }
@@ -58,7 +58,7 @@ function loadSpieler() {
 
 /**
  * shows the data of this spieler
- * @param  book  the spieler data to be shown
+ * @param  spieler data to be shown
  */
 function showSpieler(spieler) {
     $("#id").val(spieler.spielerID);
@@ -71,7 +71,7 @@ function showSpieler(spieler) {
 }
 
 /**
- * sends the book data to the webservice
+ * sends the spieler data to the webservice
  * @param form the form being submitted
  */
 function saveSpieler(form) {
