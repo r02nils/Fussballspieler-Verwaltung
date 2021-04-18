@@ -545,22 +545,6 @@ public class DataHandler{
      * get Liga from team id
      * @param id
      */
-    public static Liga getLigaFromTeamID(int id){
-        Team team = null;
-        for (int i = 0; i < teamVector.size(); i++) {
-            if (teamVector.get(i).getTeamID() == id){
-                team = teamVector.get(i);
-            }
-        }
-        Liga liga = null;
-        for (int i = 0; i < ligaVector.size(); i++) {
-            if(ligaVector.get(i).getLigaID() == team.getLiga().getLigaID()){
-                liga = team.getLiga();
-            }
-        }
-        return liga;
-    }
-
 
     /**
      * gets the spielervector
@@ -846,7 +830,7 @@ public class DataHandler{
     /**
      * gets the highest id from Spieler
      */
-    public static void getSpielerID(){
+    public static int getSpielerID(){
         int highest = 0;
         for (int i = 0; i < spielerVector.size(); i++) {
             if (highest < spielerVector.get(i).getSpielerID()){
@@ -854,12 +838,13 @@ public class DataHandler{
             }
         }
         spielerC = highest;
+        return highest;
     }
 
     /**
      * gets the highest id from Nation
      */
-    public static void getNationID(){
+    public static int getNationID(){
         int highest = 0;
         for (int i = 0; i < natVector.size(); i++) {
             if (highest < natVector.get(i).getNatID()){
@@ -867,12 +852,13 @@ public class DataHandler{
             }
         }
         nationC = highest;
+        return highest;
     }
 
     /**
      * gets the highest id from Team
      */
-    public static void getTeamID(){
+    public static int getTeamID(){
         int highest = 0;
         for (int i = 0; i < teamVector.size(); i++) {
             if (highest < teamVector.get(i).getTeamID()){
@@ -880,12 +866,13 @@ public class DataHandler{
             }
         }
         teamC = highest;
+        return highest;
     }
 
     /**
      * gets the highest id from Position
      */
-    public static void getPositionID(){
+    public static int getPositionID(){
         int highest = 0;
         for (int i = 0; i < posVector.size(); i++) {
             if (highest < posVector.get(i).getPosID()){
@@ -893,12 +880,13 @@ public class DataHandler{
             }
         }
         positionC = highest;
+        return highest;
     }
 
     /**
      * gets the highest id from Liga
      */
-    public static void getLigaID(){
+    public static int getLigaID(){
         int highest = 0;
         for (int i = 0; i < ligaVector.size(); i++) {
             if (highest < ligaVector.get(i).getLigaID()){
@@ -906,6 +894,7 @@ public class DataHandler{
             }
         }
         ligaC = highest;
+        return highest;
     }
 
     public static void main(String[] args) {

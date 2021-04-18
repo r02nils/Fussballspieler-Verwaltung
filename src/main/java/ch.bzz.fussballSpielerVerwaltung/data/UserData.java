@@ -15,18 +15,34 @@ import java.util.Arrays;
 import java.util.Base64;
 import java.util.Vector;
 
+/**
+ * UserService
+ * M133: Fussballspieler-Verwaltung
+ *
+ * @author Nils Rothenbühler
+ * @version 1.0
+ * @date 18.04.2021
+ */
+
 public class UserData {
     private static final UserData instance = new UserData();
     private static Vector<User> userVector;
     private static int userC;
-    private static User activeUser;
 
+    /**
+     * UserData
+     */
     private UserData(){
         userVector = new Vector<>();
-
         userVector = readUserJSON();
     }
 
+    /**
+     * find User
+     * @param username
+     * @param password
+     * @return user
+     */
     public static User findUser(String username, String password){
         User user = new User();
         Vector<User> userVector = readUserJSON();
@@ -36,14 +52,13 @@ public class UserData {
                 user = userVector.get(i);
             }
         }
-        activeUser = user;
         return user;
     }
 
-    public static void logout(){
-        activeUser = null;
-    }
-
+    /**
+     * read User JSON
+     * @return Vector<User>
+     */
     private static Vector<User> readUserJSON() {
         Vector<User> u = new Vector<>();
         User user = null;
@@ -80,6 +95,9 @@ public class UserData {
         return u;
     }
 
+    /**
+     * write JSON
+     */
     private static void writeJSON(){
         try{
             for (int i = 0; i < userVector.size(); i++) {
@@ -103,6 +121,9 @@ public class UserData {
         }
     }
 
+    /**
+     * get UserID
+     */
     public static void getUserID(){
         int highest = 0;
         for (int i = 0; i < userVector.size(); i++) {
@@ -113,11 +134,21 @@ public class UserData {
         userC = highest;
     }
 
+    /**
+     * String gets encoded
+     * @param text
+     * @return encodedString
+     */
     public static String encode(String text){
         String encodedString = Base64.getEncoder().encodeToString(text.getBytes());
         return encodedString;
     }
 
+    /**
+     * String gets decoded
+     * @param text
+     * @return decodedString
+     */
     public static String decode(String text){
         byte[] decodedBytes = Base64.getDecoder().decode(text);
         String decodedString = new String(decodedBytes);
@@ -125,7 +156,7 @@ public class UserData {
     }
 
     public static void main(String[] args) {
-        User user = new User(userC,"test", "test", "read");
+        User user = new User(userC,"test", "1234", "admin");
         userVector.add(user);
         writeJSON();
     }

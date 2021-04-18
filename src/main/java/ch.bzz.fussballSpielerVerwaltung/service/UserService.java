@@ -9,11 +9,25 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.awt.*;
 
+/**
+ * UserService
+ * M133: Fussballspieler-Verwaltung
+ *
+ * @author Nils Rothenbühler
+ * @version 1.0
+ * @date 18.04.2021
+ */
 @Path("user")
 public class UserService {
     @Context
     private HttpServletRequest request;
 
+    /**
+     * Login
+     * @param username
+     * @param password
+     * @return response
+     */
     @POST
     @Path("login")
     @Produces(MediaType.TEXT_PLAIN)
@@ -51,6 +65,10 @@ public class UserService {
         return response;
     }
 
+    /**
+     * Logout
+     * @return response
+     */
     @DELETE
     @Path("logout")
     @Produces(MediaType.TEXT_PLAIN)
@@ -71,8 +89,6 @@ public class UserService {
         session.invalidate();
 
         int httpStatus = 200;
-
-        UserData.logout();
 
         Response response = Response
                 .status(httpStatus)

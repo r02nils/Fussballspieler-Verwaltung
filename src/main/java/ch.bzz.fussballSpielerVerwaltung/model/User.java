@@ -36,10 +36,6 @@ public class User {
         return role;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
-
     public void setUsername(String username) {
         this.username = username;
     }

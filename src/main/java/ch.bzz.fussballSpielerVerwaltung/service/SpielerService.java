@@ -60,7 +60,7 @@ public class SpielerService {
             @FormParam("position")
             @NotEmpty
             @Pattern(regexp="^[a-zA-Z]+$")
-            @Size(min=2, max=40)
+            @Size(min=2, max=3)
                     String position,
             @CookieParam("userRole") String userRole
     ){

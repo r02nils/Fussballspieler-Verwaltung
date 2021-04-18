@@ -1,5 +1,5 @@
 /**
- *
+ * position Edit
  * @author  Nils Rothenbühler
  */
 
@@ -58,7 +58,7 @@ function loadPosition() {
 
 /**
  * shows the data of this pos
- * @param  book  the pos data to be shown
+ * @param  spieler  the pos data to be shown
  */
 function showPosition(pos) {
     $("#id").val(pos.posID);
@@ -66,7 +66,7 @@ function showPosition(pos) {
 }
 
 /**
- * sends the book data to the webservice
+ * sends the spieler data to the webservice
  * @param form the form being submitted
  */
 function savePosition(form) {

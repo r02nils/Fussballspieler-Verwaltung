@@ -1,5 +1,5 @@
 /**
- *
+ * get Position
  * @author  Nils Rothenbühler
  */
 
@@ -43,9 +43,9 @@ function loadPositions() {
 }
 
 /**
- * shows all books as a table
+ * shows all spieler as a table
  *
- * @param showPosition all books as an array
+ * @param showPosition all spieler as an array
  */
 function showPosition(positionData) {
 

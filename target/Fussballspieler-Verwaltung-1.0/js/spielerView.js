@@ -1,5 +1,5 @@
 /**
- *
+ * spieler View
  * @author  Nils Rothenbühler
  */
 
@@ -41,7 +41,7 @@ function loadSpieler() {
 
 /**
  * shows the data of this spieler
- * @param  book  the spieler data to be shown
+ * @param  spieler data to be shown
  */
 function showSpieler(spieler) {
     document.getElementById("id").innerText = spieler.spielerID;

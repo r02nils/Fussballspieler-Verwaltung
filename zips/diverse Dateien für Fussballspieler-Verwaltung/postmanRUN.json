@@ -1,0 +1,235 @@
+{
+	"id": "7d409adf-2a07-4e89-bac5-5607038a9eb5",
+	"name": "Fussballspieler-Verwaltung",
+	"timestamp": "2021-04-18T19:03:56.559Z",
+	"collection_id": "89137f25-1dc0-4460-9173-484d553ba3fc",
+	"folder_id": "862d7514-a9a5-4aab-b89f-1045fa06c6ab",
+	"environment_id": "0",
+	"totalPass": 7,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "519e0552-400d-4c51-8378-0f5c6ea01463",
+			"name": "login with role \"guest\"",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/user/login",
+			"time": 30,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				30
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "e810ebc2-e0f9-4538-81cf-ca30d268efbd",
+			"name": "SpielerList",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/list",
+			"time": 15,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "4187fcc0-ed14-4fbd-91fe-545b88f29738",
+			"name": "login with role \"admin\"",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/user/login",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "63da8e0c-fa8a-47aa-a7d2-b60dec71bcb2",
+			"name": "SpielerList",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/spieler/list",
+			"time": 367,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				367
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "25e94f4a-53d2-4498-a058-9b783af9ec41",
+			"name": "login",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/user/login",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "27f3d0a1-1af7-4788-8c64-d2b722556621",
+			"name": "logoff",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/user/logout",
+			"time": 18,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				18
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "e1303637-b905-4f00-8508-2a2469207c02",
+			"name": "login with wrong username or password",
+			"url": "http://localhost:8080/Fussballspieler-Verwaltung-1.0/resource/user/login",
+			"time": 47,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				47
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 495,
+	"collection": {
+		"requests": [
+			{
+				"id": "519e0552-400d-4c51-8378-0f5c6ea01463",
+				"method": "POST"
+			},
+			{
+				"id": "e810ebc2-e0f9-4538-81cf-ca30d268efbd",
+				"method": "GET"
+			},
+			{
+				"id": "4187fcc0-ed14-4fbd-91fe-545b88f29738",
+				"method": "POST"
+			},
+			{
+				"id": "63da8e0c-fa8a-47aa-a7d2-b60dec71bcb2",
+				"method": "GET"
+			},
+			{
+				"id": "25e94f4a-53d2-4498-a058-9b783af9ec41",
+				"method": "POST"
+			},
+			{
+				"id": "27f3d0a1-1af7-4788-8c64-d2b722556621",
+				"method": "DELETE"
+			},
+			{
+				"id": "e1303637-b905-4f00-8508-2a2469207c02",
+				"method": "POST"
+			}
+		]
+	}
+}

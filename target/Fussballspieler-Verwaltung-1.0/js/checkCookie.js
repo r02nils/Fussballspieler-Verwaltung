@@ -1,3 +1,7 @@
+/**
+ * checkCookie
+ * @author  Nils Rothenbühler
+ */
 $(document).ready(function (){
     const cookie = document.cookie;
 

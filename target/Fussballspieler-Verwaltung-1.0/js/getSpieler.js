@@ -1,5 +1,5 @@
 /**
- *
+ * get Spieler
  * @author  Nils Rothenbühler
  */
 
@@ -43,9 +43,9 @@ function loadSpielers() {
 }
 
 /**
- * shows all books as a table
+ * shows all spieler as a table
  *
- * @param showSpieler all books as an array
+ * @param showSpieler all spieler as an array
  */
 function showSpieler(SpielerData) {
 
@@ -139,8 +139,8 @@ function clearTable(table) {
 
 
 /**
- * send delete request for a book
- * @param bookUUID
+ * send delete request for a spieler
+ * @param id
  */
 function deleteSpieler(id) {
     $
