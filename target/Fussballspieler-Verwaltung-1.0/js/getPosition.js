@@ -1,5 +1,5 @@
 /**
- * get Position
+ *
  * @author  Nils Rothenbühler
  */
 

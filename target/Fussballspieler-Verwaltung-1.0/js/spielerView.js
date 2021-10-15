@@ -1,5 +1,5 @@
 /**
- * spieler View
+ *
  * @author  Nils Rothenbühler
  */
 

@@ -1,7 +1,4 @@
-/**
- * login
- * @author  Nils Rothenbühler
- */
+
 $(document).ready(function (){
     $("#loginForm").submit(sendLogin);
     $("#logoff").click(sendLogout);

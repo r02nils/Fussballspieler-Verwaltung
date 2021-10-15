@@ -1,5 +1,5 @@
 /**
- * position Edit
+ *
  * @author  Nils Rothenbühler
  */
 

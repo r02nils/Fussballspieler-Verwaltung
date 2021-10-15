@@ -1,5 +1,5 @@
 /**
- * get Spieler
+ *
  * @author  Nils Rothenbühler
  */
 
